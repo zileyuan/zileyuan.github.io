@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.0.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.0.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false,"dimmer":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="TSLint常用设置的一些解释">
+<meta name="keywords" content="nodejs,TSLint">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TSLint设置解释">
+<meta property="og:url" content="http://zileyuan.github.io/2018/05/31/tslint/index.html">
+<meta property="og:site_name" content="Zach&#39;s Blog">
+<meta property="og:description" content="TSLint常用设置的一些解释">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-02-27T02:05:55.351Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="TSLint设置解释">
+<meta name="twitter:description" content="TSLint常用设置的一些解释">
+
+
+
+
+
+
+  <link rel="canonical" href="http://zileyuan.github.io/2018/05/31/tslint/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>TSLint设置解释 | Zach's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Zach's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zileyuan.github.io/2018/05/31/tslint/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zach Yuan">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/1551152468450.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zach's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">TSLint设置解释
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-05-31 23:45:37" itemprop="dateCreated datePublished" datetime="2018-05-31T23:45:37+08:00">2018-05-31</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-02-27 10:05:55" itemprop="dateModified" datetime="2019-02-27T10:05:55+08:00">2019-02-27</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/nodejs/" itemprop="url" rel="index"><span itemprop="name">nodejs</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>TSLint常用设置的一些解释</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install tslint typescript --save-dev</span><br><span class="line"><span class="comment"># or</span></span><br><span class="line">npm install tslint typescript -g</span><br></pre></td></tr></table></figure>
+<h1 id="CLI-用法"><a href="#CLI-用法" class="headerlink" title="CLI 用法"></a>CLI 用法</h1><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">tslint [options] [file ...]</span><br></pre></td></tr></table></figure>
+<p>命令行的选项详见 <a href="https://palantir.github.io/tslint/usage/cli/" target="_blank" rel="noopener">Options</a></p>
+<h1 id="tslint-json-设置"><a href="#tslint-json-设置" class="headerlink" title="tslint.json 设置"></a>tslint.json 设置</h1><p>tslint主要关注三部分：extends，rulesDirectory，rules我们分别来看一下</p>
+<h2 id="extends"><a href="#extends" class="headerlink" title="extends"></a>extends</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">extends?: string | string[]</span><br></pre></td></tr></table></figure>
+<p>表示从内建的预设配置继承，可以是单一也可以是数组，内建的预设配置如下</p>
+<blockquote>
+<p><code>tslint:recommended</code>:最常用，最稳定的一些规则选项，</p>
+</blockquote>
+<blockquote>
+<p><code>tslint:latest</code>:继承自<code>tslint:recommended</code>，根据最新的一些特性进行规则设置，可能是下一个版本的<code>tslint:recommended</code></p>
+</blockquote>
+<blockquote>
+<p><code>tslint:all</code>: 打开严格模式的所有规则选项</p>
+</blockquote>
+<p>预设也可以使用第三方的，比如tslint-config-alloy，需要安装</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install –save-dev tslint-eslint-rules tslint-config-alloy</span><br></pre></td></tr></table></figure>
+<h2 id="rulesDirectory"><a href="#rulesDirectory" class="headerlink" title="rulesDirectory"></a>rulesDirectory</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">rulesDirectory?: string | string[]</span><br></pre></td></tr></table></figure>
+<p>指定规则生效的目录，可以是一个或多个</p>
+<h2 id="rules"><a href="#rules" class="headerlink" title="rules"></a>rules</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">rules?: &#123; [name: string]: RuleSetting &#125;</span><br></pre></td></tr></table></figure>
+<p>单独定义的一些规则选项，会覆盖之前的一些预设的选项，示例如下</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"extends"</span>: <span class="string">"tslint:recommended"</span>,</span><br><span class="line">    <span class="attr">"rulesDirectory"</span>: [<span class="string">"path/to/custom/rules/directory/"</span>, <span class="string">"another/path/"</span>],</span><br><span class="line">    <span class="attr">"rules"</span>: &#123;</span><br><span class="line">        <span class="attr">"max-line-length"</span>: &#123;</span><br><span class="line">            <span class="attr">"options"</span>: [<span class="number">120</span>]</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">"new-parens"</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="attr">"no-arg"</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="attr">"no-bitwise"</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="attr">"no-conditional-assignment"</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="attr">"no-consecutive-blank-lines"</span>: <span class="literal">false</span>,</span><br><span class="line">        <span class="attr">"no-console"</span>: &#123;</span><br><span class="line">            <span class="attr">"severity"</span>: <span class="string">"warning"</span>,</span><br><span class="line">            <span class="attr">"options"</span>: [<span class="string">"debug"</span>, <span class="string">"info"</span>, <span class="string">"log"</span>, <span class="string">"time"</span>, <span class="string">"timeEnd"</span>, <span class="string">"trace"</span>]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">"jsRules"</span>: &#123;</span><br><span class="line">        <span class="attr">"max-line-length"</span>: &#123;</span><br><span class="line">            <span class="attr">"options"</span>: [<span class="number">120</span>]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"extends"</span>: <span class="string">"tslint-config-alloy"</span>,</span><br><span class="line">  <span class="attr">"rules"</span>: &#123;</span><br><span class="line">    "no-parameter-properties":false, // 禁止给类的构造函数的参数添加修饰符</span><br><span class="line">    "triple-equals":false,</span><br><span class="line">    "no-debugger": false,</span><br><span class="line">    // 禁止行尾有空格</span><br><span class="line">    "no-trailing-whitespace": false,</span><br><span class="line">    "member-ordering":false,</span><br><span class="line">    "no-this-assignment": [true, &#123;"allowed-names": ["^self$","^that$"], "allow-destructuring": true&#125;],</span><br><span class="line">    // 必须使用箭头函数，除非是单独的函数声明或是命名函数</span><br><span class="line">    "only-arrow-functions": [</span><br><span class="line">      false,</span><br><span class="line">      "allow-declarations",</span><br><span class="line">      <span class="string">"allow-named-functions"</span></span><br><span class="line">    ],</span><br><span class="line">    // 禁止出现空代码块，允许 catch 是空代码块</span><br><span class="line">    "no-empty": [</span><br><span class="line">      false,</span><br><span class="line">      <span class="string">"allow-empty-catch"</span></span><br><span class="line">    ],</span><br><span class="line">    // 禁止无用的类型断言</span><br><span class="line">    "no-unnecessary-type-assertion": false,</span><br><span class="line">    // 使用 return; 而不是 return undefined;</span><br><span class="line">    "return-undefined": false,</span><br><span class="line">    // 禁止对 array 使用 for in 循环</span><br><span class="line">    "no-for-in-array": false,</span><br><span class="line">    "comment-format": [true, "check-space"], // 单行注释格式化规则</span><br><span class="line">  &#125;,</span><br><span class="line">  "rulesDirectory": [</span><br><span class="line">    <span class="string">"node_modules/tslint-eslint-rules/dist/rules"</span></span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>常用的一些规则如下：<br><figure class="highlight"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  // 禁止给类的构造函数的参数添加修饰符</span><br><span class="line">  "no-parameter-properties": false,</span><br><span class="line">  // 禁止使用 debugger</span><br><span class="line">  "no-debugger": false,</span><br><span class="line">  // 禁止行尾有空格</span><br><span class="line">  "no-trailing-whitespace": false,</span><br><span class="line">  // 禁止无用的表达式</span><br><span class="line">  "no-unused-expression": true,</span><br><span class="line">  // 定义过的变量必须使用</span><br><span class="line">  "no-unused-variable": true,</span><br><span class="line">  // 变量必须先定义后使用</span><br><span class="line">  "no-use-before-declare": true,</span><br><span class="line">  // 禁止使用 var</span><br><span class="line">  "no-var-keyword": true,</span><br><span class="line">  // 必须使用 === 或 !==，禁止使用 == 或 !=，与 null 比较时除外</span><br><span class="line">  "triple-equals": true,</span><br><span class="line">  // 指定类成员的排序规则</span><br><span class="line">  "member-ordering": false,</span><br><span class="line">  // 禁止将 this 赋值给其他变量，除非是解构赋值</span><br><span class="line">  "no-this-assignment": [</span><br><span class="line">    false,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">"allowed-names"</span>: [</span><br><span class="line">        <span class="string">"^self$"</span>,</span><br><span class="line">        <span class="string">"^that$"</span></span><br><span class="line">      ],</span><br><span class="line">      <span class="attr">"allow-destructuring"</span>: <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">  ],</span><br><span class="line">  // 必须使用箭头函数，除非是单独的函数声明或是命名函数</span><br><span class="line">  "only-arrow-functions": [</span><br><span class="line">    true,</span><br><span class="line">    "allow-declarations",</span><br><span class="line">    <span class="string">"allow-named-functions"</span></span><br><span class="line">  ],</span><br><span class="line">  // 禁止出现空代码块，允许 catch 是空代码块</span><br><span class="line">  "no-empty": [</span><br><span class="line">    true,</span><br><span class="line">    <span class="string">"allow-empty-catch"</span></span><br><span class="line">  ],</span><br><span class="line">  // 禁止无用的类型断言</span><br><span class="line">  "no-unnecessary-type-assertion": true,</span><br><span class="line">  // 使用 return; 而不是 return undefined;</span><br><span class="line">  "return-undefined": true,</span><br><span class="line">  // 禁止对 array 使用 for in 循环</span><br><span class="line">  "no-for-in-array": true,</span><br><span class="line">  "comment-format": [</span><br><span class="line">    true,</span><br><span class="line">    <span class="string">"check-space"</span></span><br><span class="line">  ],</span><br><span class="line">  // 单行注释格式化规则</span><br><span class="line">  // 定义函数时如果用到了覆写，则必须将覆写的函数写到一起</span><br><span class="line">  "adjacent-overload-signatures": true,</span><br><span class="line">  // 禁止对函数的参数重新赋值</span><br><span class="line">  "no-parameter-reassignment": true,</span><br><span class="line">  // if 后面必须有 &#123;，除非是单行 if</span><br><span class="line">  "curly": [</span><br><span class="line">    true,</span><br><span class="line">    <span class="string">"ignore-same-line"</span></span><br><span class="line">  ],</span><br><span class="line">  // for in 内部必须有 hasOwnProperty</span><br><span class="line">  "forin": true,</span><br><span class="line">  // 禁止在分支条件判断中有赋值操作</span><br><span class="line">  "no-conditional-assignment": true,</span><br><span class="line">  // 禁止使用 new 来生成 String, Number 或 Boolean</span><br><span class="line">  "no-construct": true,</span><br><span class="line">  // 禁止 super 在一个构造函数中出现两次</span><br><span class="line">  "no-duplicate-super": true,</span><br><span class="line">  // 禁止在 switch 语句中出现重复测试表达式的 case</span><br><span class="line">  "no-duplicate-switch-case": true,</span><br><span class="line">  // 禁止出现重复的变量定义或函数参数名</span><br><span class="line">  "no-duplicate-variable": [</span><br><span class="line">    true,</span><br><span class="line">    <span class="string">"check-parameters"</span></span><br><span class="line">  ],</span><br><span class="line">  // 禁止使用 eval</span><br><span class="line">  "no-eval": true,</span><br><span class="line">  // 禁止对对象字面量进行类型断言（断言成 any 是允许的）</span><br><span class="line">  "no-object-literal-type-assertion": true,</span><br><span class="line">  // 禁止没必要的 return await</span><br><span class="line">  "no-return-await": true,</span><br><span class="line">  // 禁止在数组中出现连续的逗号，如 let foo = [,,]</span><br><span class="line">  "no-sparse-arrays": true,</span><br><span class="line">  // 禁止 throw 字符串，必须 throw 一个 Error 对象</span><br><span class="line">  "no-string-throw": true,</span><br><span class="line">  // switch 的 case 必须 return 或 break</span><br><span class="line">  "no-switch-case-fall-through": true,</span><br><span class="line">  // 使用实例的方法时，必须 bind 到实例上</span><br><span class="line">  "no-unbound-method": [</span><br><span class="line">    true,</span><br><span class="line">    <span class="string">"ignore-static"</span></span><br><span class="line">  ],</span><br><span class="line">  // 使用 &#123; ...foo, bar: 1 &#125; 代替 Object.assign(&#123;&#125;, foo, &#123; bar: 1 &#125;)</span><br><span class="line">  // 前者的类型检查更完善</span><br><span class="line">  "prefer-object-spread": true,</span><br><span class="line">  // parseInt 必须传入第二个参数</span><br><span class="line">  "radix": true,</span><br><span class="line">  // 必须使用 isNaN(foo) 而不是 foo === NaN</span><br><span class="line">  "use-isnan": true,</span><br><span class="line">  //</span><br><span class="line">  //</span><br><span class="line">  // 可维护性</span><br><span class="line">  // 这些规则可以增加代码的可维护性</span><br><span class="line">  //</span><br><span class="line">  // 禁止函数的循环复杂度超过 20，https://en.wikipedia.org/wiki/Cyclomatic_complexity</span><br><span class="line">  "cyclomatic-complexity": [</span><br><span class="line">    true,</span><br><span class="line">    <span class="number">20</span></span><br><span class="line">  ],</span><br><span class="line">  // 禁止使用废弃（被标识了 @deprecated）的 API</span><br><span class="line">  "deprecation": true,</span><br><span class="line">  // 一个缩进必须用四个空格替代</span><br><span class="line">  "indent": [</span><br><span class="line">    true,</span><br><span class="line">    "spaces",</span><br><span class="line">    <span class="number">4</span></span><br><span class="line">  ],</span><br><span class="line">  // 禁止出现重复的 import</span><br><span class="line">  "no-duplicate-imports": true,</span><br><span class="line">  // 禁止一个文件中出现多个相同的 namespace</span><br><span class="line">  "no-mergeable-namespace": true,</span><br><span class="line">  // 文件类型必须时 utf-8</span><br><span class="line">  "encoding": true,</span><br><span class="line">  // import 语句中，关键字之间的间距必须是一个空格</span><br><span class="line">  "import-spacing": true,</span><br><span class="line">  // 接口可以 implement extend 和 merge</span><br><span class="line">  "interface-over-type-literal": true,</span><br><span class="line">  // new 后面只必须有一个空格</span><br><span class="line">  "new-parens": true,</span><br><span class="line">  // 类型断言必须使用 as Type，禁止使用 &lt;Type&gt;</span><br><span class="line">  // &lt;Type&gt; 容易被理解为 jsx</span><br><span class="line">  "no-angle-bracket-type-assertion": true,</span><br><span class="line">  // 禁止连续超过三行空行</span><br><span class="line">  "no-consecutive-blank-lines": [</span><br><span class="line">    true,</span><br><span class="line">    <span class="number">3</span></span><br><span class="line">  ],</span><br><span class="line">  // 禁止使用特殊空白符（比如全角空格）</span><br><span class="line">  "no-irregular-whitespace": true,</span><br><span class="line">  // 禁止使用 JSDoc，因为 TypeScirpt 已经包含了大部分功能</span><br><span class="line">  "no-redundant-jsdoc": true,</span><br><span class="line">  // 禁止使用三斜杠引入类型定义文件</span><br><span class="line">  "no-reference-import": true,</span><br><span class="line">  // 禁止变量定义时赋值为 undefined</span><br><span class="line">  "no-unnecessary-initializer": true,</span><br><span class="line">  // 小数必须以 0. 开头，禁止以 . 开头，并且不能以 0 结尾</span><br><span class="line">  "number-literal-format": true,</span><br><span class="line">  // 必须使用 a = &#123;b&#125; 而不是 a = &#123;b: b&#125;</span><br><span class="line">  "object-literal-shorthand": true,</span><br><span class="line">  // 变量申明必须每行一个，for 循环的初始条件中除外</span><br><span class="line">  "one-variable-per-declaration": [</span><br><span class="line">    true,</span><br><span class="line">    <span class="string">"ignore-for-loop"</span></span><br><span class="line">  ],</span><br><span class="line">  // if 后的 &#123; 禁止换行</span><br><span class="line">  "one-line": true,</span><br><span class="line">  // 必须使用单引号，jsx 中必须使用双引号</span><br><span class="line">  "quotemark": [</span><br><span class="line">    true,</span><br><span class="line">    "single",</span><br><span class="line">    "jsx-double",</span><br><span class="line">    "avoid-template",</span><br><span class="line">    <span class="string">"avoid-escape"</span></span><br><span class="line">  ],</span><br><span class="line">  // 行尾必须有分号</span><br><span class="line">  "semicolon": [</span><br><span class="line">    true,</span><br><span class="line">    "always",</span><br><span class="line">    <span class="string">"ignore-interfaces"</span></span><br><span class="line">  ],</span><br><span class="line">  // 函数名前必须有空格</span><br><span class="line">  "space-before-function-paren": [</span><br><span class="line">    true,</span><br><span class="line">    <span class="string">"asyncArrow"</span></span><br><span class="line">  ],</span><br><span class="line">  // 括号内首尾禁止有空格</span><br><span class="line">  "space-within-parens": [</span><br><span class="line">    true,</span><br><span class="line">    <span class="number">0</span></span><br><span class="line">  ],</span><br><span class="line">  // 禁止 finally 内出现 return, continue, break, throw 等</span><br><span class="line">  // finally 会比 catch 先执行</span><br><span class="line">  "no-unsafe-finally": true</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="注释标记"><a href="#注释标记" class="headerlink" title="注释标记"></a>注释标记</h1><ul>
+<li>/<em> tslint:disable </em>/ - 忽略该行以下所有代码出现的错误提示</li>
+<li>/<em> tslint:enable </em>/ - 对该行以下所有代码启用规则</li>
+<li>/<em> tslint:disable:rule1 rule2 rule3… </em>/ - 忽略该行以下所有代码出现的错误提示（指定忽略规则）</li>
+<li>/<em> tslint:enable:rule1 rule2 rule3… </em>/ - 对该行以下所有代码启用规则（启用规则）</li>
+</ul>
+<p>示例如下</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">validRange</span> (<span class="params">range: any</span>) </span>&#123;</span><br><span class="line">   <span class="keyword">return</span> range.min &lt;= range.middle &amp;&amp; range.middle &lt;= range.max;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* tslint:disable:object-literal-sort-keys */</span></span><br><span class="line"><span class="keyword">const</span> range = &#123;</span><br><span class="line">   min: <span class="number">5</span>,</span><br><span class="line">   middle: <span class="number">10</span>,    <span class="comment">// TSLint will *not* warn about unsorted keys here</span></span><br><span class="line">   max: <span class="number">20</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">/* tslint:enable:object-literal-sort-keys */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> point = &#123;</span><br><span class="line">   x: <span class="number">3</span>,</span><br><span class="line">   z: <span class="number">5</span>,          <span class="comment">// TSLint will warn about unsorted keys here</span></span><br><span class="line">   y: <span class="number">4</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(validRange(range));</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/nodejs/" rel="tag"># nodejs</a>
+          
+            <a href="/tags/TSLint/" rel="tag"># TSLint</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/07/jsmodule/" rel="next" title="JS的CommonJS和ES Module模块化">
+                <i class="fa fa-chevron-left"></i> JS的CommonJS和ES Module模块化
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/12/http/" rel="prev" title="HTTP相关基础">
+                HTTP相关基础 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/1551152468450.jpg" alt="Zach Yuan">
+            
+              <p class="site-author-name" itemprop="name">Zach Yuan</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/zileyuan" title="GitHub &rarr; https://github.com/zileyuan" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://twitter.com/zileyuan" title="Twitter &rarr; https://twitter.com/zileyuan" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安装"><span class="nav-number">1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CLI-用法"><span class="nav-number">2.</span> <span class="nav-text">CLI 用法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#tslint-json-设置"><span class="nav-number">3.</span> <span class="nav-text">tslint.json 设置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#extends"><span class="nav-number">3.1.</span> <span class="nav-text">extends</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#rulesDirectory"><span class="nav-number">3.2.</span> <span class="nav-text">rulesDirectory</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#rules"><span class="nav-number">3.3.</span> <span class="nav-text">rules</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#注释标记"><span class="nav-number">4.</span> <span class="nav-text">注释标记</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zach Yuan</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.0.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.0"></script>
+
+  <script src="/js/src/motion.js?v=7.0.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/affix.js?v=7.0.0"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=7.0.0"></script>
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.0"></script>
+<script src="/js/src/post-details.js?v=7.0.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=7.0.0"></script>
+
+
+  
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
