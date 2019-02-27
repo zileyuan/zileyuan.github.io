@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.0.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.0.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false,"dimmer":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="npm命令行和相关配置，已经一些版本号相关的介绍">
+<meta name="keywords" content="nodejs,npm">
+<meta property="og:type" content="article">
+<meta property="og:title" content="npm命令行和相关配置讲解">
+<meta property="og:url" content="http://zileyuan.github.io/2018/09/24/npm/index.html">
+<meta property="og:site_name" content="Zach&#39;s Blog">
+<meta property="og:description" content="npm命令行和相关配置，已经一些版本号相关的介绍">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-02-26T08:49:14.958Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="npm命令行和相关配置讲解">
+<meta name="twitter:description" content="npm命令行和相关配置，已经一些版本号相关的介绍">
+
+
+
+
+
+
+  <link rel="canonical" href="http://zileyuan.github.io/2018/09/24/npm/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>npm命令行和相关配置讲解 | Zach's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Zach's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zileyuan.github.io/2018/09/24/npm/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zach Yuan">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/1551152468450.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zach's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">npm命令行和相关配置讲解
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-09-24 12:56:23" itemprop="dateCreated datePublished" datetime="2018-09-24T12:56:23+08:00">2018-09-24</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-02-26 16:49:14" itemprop="dateModified" datetime="2019-02-26T16:49:14+08:00">2019-02-26</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/nodejs/" itemprop="url" rel="index"><span itemprop="name">nodejs</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>npm命令行和相关配置，已经一些版本号相关的介绍</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="npm-init"><a href="#npm-init" class="headerlink" title="npm init"></a>npm init</h1><ul>
+<li>初始化一个package.json的项目文件</li>
+</ul>
+<h1 id="换npm镜像"><a href="#换npm镜像" class="headerlink" title="换npm镜像"></a>换npm镜像</h1><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm config <span class="built_in">set</span> registry https://registry.npm.taobao.org</span><br><span class="line">// 配置后可通过下面方式来验证是否成功</span><br><span class="line">npm config get registry</span><br></pre></td></tr></table></figure>
+<h1 id="npm-常用命令"><a href="#npm-常用命令" class="headerlink" title="npm 常用命令"></a>npm 常用命令</h1><h2 id="本地安装"><a href="#本地安装" class="headerlink" title="本地安装"></a>本地安装</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install &lt;包&gt;      <span class="comment"># 本地安装</span></span><br><span class="line"><span class="comment"># 或者</span></span><br><span class="line">npm i &lt;包&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="全局安装"><a href="#全局安装" class="headerlink" title="全局安装"></a>全局安装</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install &lt;包&gt; -g   <span class="comment"># 全局安装</span></span><br></pre></td></tr></table></figure>
+<h2 id="卸载包"><a href="#卸载包" class="headerlink" title="卸载包"></a>卸载包</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm uninstall &lt;包&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="更新包"><a href="#更新包" class="headerlink" title="更新包"></a>更新包</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//更新当前项目中安装的某个包</span><br><span class="line">npm update &lt;包&gt;</span><br><span class="line"></span><br><span class="line">//更新当前项目中安装的所有包</span><br><span class="line">npm update</span><br><span class="line"></span><br><span class="line">//更新全局安装的包</span><br><span class="line">npm update &lt;包&gt; -g</span><br></pre></td></tr></table></figure>
+<h1 id="版本依赖"><a href="#版本依赖" class="headerlink" title="版本依赖"></a>版本依赖</h1><h2 id="semver"><a href="#semver" class="headerlink" title="semver"></a>semver</h2><ul>
+<li>semver 约定一个包的版本号必须包含3个数字，格式必须为 <code>MAJOR.MINOR.PATCH</code>, 意为 主版本号.小版本号.修订版本号</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>标识</th>
+<th>含义</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>^2.2.1</code></td>
+<td>指定的 MAJOR 版本号下, 所有更新的版本</td>
+<td>匹配 2.2.3, 2.3.0; 不匹配 1.0.3, 3.0.1</td>
+</tr>
+<tr>
+<td><code>~2.2.1</code></td>
+<td>指定 MAJOR.MINOR 版本号下，所有更新的版本</td>
+<td>匹配 2.2.3, 2.2.9 ; 不匹配 2.3.0, 2.4.5</td>
+</tr>
+<tr>
+<td><code>&gt;=2.1</code></td>
+<td>版本号大于或等于2.1.0</td>
+<td>匹配 2.1.2, 3.1</td>
+</tr>
+<tr>
+<td><code>&lt;=2.2</code></td>
+<td>版本号小于或等于 2.2</td>
+<td>匹配 1.0.0, 2.2.1, 2.2.11</td>
+</tr>
+<tr>
+<td><code>1.0.0-2.0.0</code></td>
+<td>版本号从 1.0.0 (含) 到 2.0.0 (含)</td>
+<td>匹配 1.0.0, 1.3.4, 2.0.0</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>在常规仅包含数字的版本号之外，semver 还允许在 <code>MAJOR.MINOR.PATCH</code> 后追加 <code>-</code> 后跟点号分隔的标签，作为预发布版本标签，通常被视为不稳定、不建议生产使用的版本。例如：<ul>
+<li><code>1.0.0-alpha</code></li>
+<li><code>1.0.0-beta.1</code></li>
+<li><code>1.0.0-rc.3</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="package-lock-npm5-2"><a href="#package-lock-npm5-2" class="headerlink" title="package-lock(npm5.2+)"></a>package-lock(npm5.2+)</h2><ul>
+<li>npm 5.1+ 使得 package.json 和 package-lock.json 中所保存的版本号更加统一，解决了 npm 之前的各种问题。只要遵循好的实践习惯，团队成员可以很方便地维护一套应用代码和 node_modules 依赖都一致的环境。</li>
+<li>版本库工具提交 package.json, package-lock.json</li>
+<li>不要手动修改 package-lock.json</li>
+<li>升级依赖包<ul>
+<li>升级小版本: 本地执行 <code>npm update</code> 升级到新的小版本</li>
+<li>升级大版本: 本地执行 <code>npm install &lt;package-name&gt;@&lt;version&gt;</code> 升级到新的大版本</li>
+<li>本地验证升级后新版本无问题后，提交新的 package.json, package-lock.json 文件</li>
+</ul>
+</li>
+<li>降级依赖包<ul>
+<li>npm install <code>&lt;package-name&gt;@&lt;old-version&gt;</code> 验证无问题后，提交 package.json 和 package-lock.json 文件</li>
+</ul>
+</li>
+<li>删除依赖包<ul>
+<li>方法一：<code>npm uninstall &lt;package&gt;</code> 并提交 package.json 和 package-lock.json</li>
+<li>方法二：把要卸载的包从 package.json 中 dependencies 字段删除, 然后执行 <code>npm install</code> 并提交 package.json 和 package-lock.json</li>
+</ul>
+</li>
+</ul>
+<h1 id="npm-scripts"><a href="#npm-scripts" class="headerlink" title="npm scripts"></a>npm scripts</h1><h2 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h2><ul>
+<li>npm scripts 是 npm 另一个很重要的特性。通过在 package.json 中 scripts 字段定义一个脚本，例如：</li>
+</ul>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"scripts"</span>: &#123;</span><br><span class="line">        <span class="attr">"echo"</span>: <span class="string">"echo HELLO WORLD"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>我们就可以通过 npm run echo 命令来执行这段脚本，像在 shell 中执行该命令 echo HELLO WORLD 一样，看到终端输出 HELLO WORLD</li>
+<li>可以参考阮一峰老师的文章 <a href="https://link.juejin.im/?target=http%3A%2F%2Fwww.ruanyifeng.com%2Fblog%2F2016%2F10%2Fnpm_scripts.html" target="_blank" rel="noopener">npm script 使用指南 (2016年10月)</a></li>
+</ul>
+<h2 id="npx"><a href="#npx" class="headerlink" title="npx"></a>npx</h2><ul>
+<li>npx 的使用很简单，就是执行 <code>npx &lt;command&gt;</code> 即可，这里的 <code>&lt;command&gt;</code> 默认就是 ./node_modules 目录中安装的可执行脚本名。例如本地安装好的 webpack 包，我们可以直接使用 npx webpack 执行即可。</li>
+</ul>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/nodejs/" rel="tag"># nodejs</a>
+          
+            <a href="/tags/npm/" rel="tag"># npm</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/21/webpack/" rel="next" title="webpack4 基本使用">
+                <i class="fa fa-chevron-left"></i> webpack4 基本使用
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/1551152468450.jpg" alt="Zach Yuan">
+            
+              <p class="site-author-name" itemprop="name">Zach Yuan</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">10</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/zileyuan" title="GitHub &rarr; https://github.com/zileyuan" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://twitter.com/zileyuan" title="Twitter &rarr; https://twitter.com/zileyuan" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#npm-init"><span class="nav-number">1.</span> <span class="nav-text">npm init</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#换npm镜像"><span class="nav-number">2.</span> <span class="nav-text">换npm镜像</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#npm-常用命令"><span class="nav-number">3.</span> <span class="nav-text">npm 常用命令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#本地安装"><span class="nav-number">3.1.</span> <span class="nav-text">本地安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#全局安装"><span class="nav-number">3.2.</span> <span class="nav-text">全局安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#卸载包"><span class="nav-number">3.3.</span> <span class="nav-text">卸载包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更新包"><span class="nav-number">3.4.</span> <span class="nav-text">更新包</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#版本依赖"><span class="nav-number">4.</span> <span class="nav-text">版本依赖</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#semver"><span class="nav-number">4.1.</span> <span class="nav-text">semver</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#package-lock-npm5-2"><span class="nav-number">4.2.</span> <span class="nav-text">package-lock(npm5.2+)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#npm-scripts"><span class="nav-number">5.</span> <span class="nav-text">npm scripts</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本使用"><span class="nav-number">5.1.</span> <span class="nav-text">基本使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#npx"><span class="nav-number">5.2.</span> <span class="nav-text">npx</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zach Yuan</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.0.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.0"></script>
+
+  <script src="/js/src/motion.js?v=7.0.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/affix.js?v=7.0.0"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=7.0.0"></script>
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.0"></script>
+<script src="/js/src/post-details.js?v=7.0.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=7.0.0"></script>
+
+
+  
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
