@@ -104,13 +104,13 @@
 <meta property="og:site_name" content="Zach&#39;s Blog">
 <meta property="og:description" content="Git高级特性使用">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://zileyuan.github.io/images/posts/git_advsnced/1.png">
-<meta property="og:image" content="http://zileyuan.github.io/images/posts/git_advsnced/2.png">
-<meta property="og:updated_time" content="2019-03-01T04:17:02.789Z">
+<meta property="og:image" content="http://zileyuan.github.io/images/posts/git_advanced/1.png">
+<meta property="og:image" content="http://zileyuan.github.io/images/posts/git_advanced/2.png">
+<meta property="og:updated_time" content="2019-03-01T04:20:38.864Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git高级特性使用">
 <meta name="twitter:description" content="Git高级特性使用">
-<meta name="twitter:image" content="http://zileyuan.github.io/images/posts/git_advsnced/1.png">
+<meta name="twitter:image" content="http://zileyuan.github.io/images/posts/git_advanced/1.png">
 
 
 
@@ -431,11 +431,11 @@
 <h1 id="rebase"><a href="#rebase" class="headerlink" title="rebase"></a>rebase</h1><p>在 Git 中整合来自不同分支的修改主要有两种方法中的一种，原理是首先找到这两个分支的最近共同祖先，然后对比当前分支相对于该祖先的历次提交，提取相应的修改并存为临时文件，然后将当前分支指向目标基底, 最后以此将之前另存为临时文件的修改依序应用。</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git checkout &lt;branch&gt;</span><br><span class="line">git rebase &lt;base-branch&gt;</span><br></pre></td></tr></table></figure>
 <p>过程如下图：</p>
-<p><img src="/images/posts/git_advsnced/1.png" alt="rebase过程"></p>
+<p><img src="/images/posts/git_advanced/1.png" alt="rebase过程"></p>
 <h1 id="cherry-picking"><a href="#cherry-picking" class="headerlink" title="cherry picking"></a>cherry picking</h1><p>提取该提交的补丁（原理和rebase一样），之后尝试将其重新应用到当前分支上。这种方式在只想引入特性分支中的某个提交，或者特性分支中只有一个提交，而你不想运行变基时很有用。</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git cherry-pick &lt;commit&gt;</span><br></pre></td></tr></table></figure>
 <p>过程如下图：</p>
-<p><img src="/images/posts/git_advsnced/2.png" alt="cherry-pick过程"></p>
+<p><img src="/images/posts/git_advanced/2.png" alt="cherry-pick过程"></p>
 <h1 id="submodule"><a href="#submodule" class="headerlink" title="submodule"></a>submodule</h1><p>某个工作中的项目需要包含并使用另一个项目。也许是第三方库，或者你独立开发的，用于多个父项目的库。你想要把它们当做两个独立的项目，同时又想在一个项目中使用另一个。<br>用法：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 项目里面加入子模块</span></span><br><span class="line">git submodule add &lt;url&gt; &lt;path&gt;</span><br><span class="line"><span class="comment"># 克隆包含子模块的项目</span></span><br><span class="line">git <span class="built_in">clone</span> --recursive &lt;url&gt;</span><br><span class="line"><span class="comment">#更新包含的子模块</span></span><br><span class="line">git submodule update --remote</span><br></pre></td></tr></table></figure>
 <p>同样可以编辑工作区下的.gitmodules文件</p>
