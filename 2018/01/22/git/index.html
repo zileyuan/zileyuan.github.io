@@ -48,19 +48,19 @@
 
 <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
 
-<link rel="stylesheet" href="/css/main.css?v=7.0.0">
+<link rel="stylesheet" href="/css/main.css?v=7.0.1">
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.1">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.1">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.1">
 
 
-  <link rel="mask-icon" href="/images/logo.svg?v=7.0.0" color="#222">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.0.1" color="#222">
 
 
 
@@ -73,7 +73,7 @@
   var CONFIG = {
     root: '/',
     scheme: 'Pisces',
-    version: '7.0.0',
+    version: '7.0.1',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false,"dimmer":false},
     fancybox: false,
     fastclick: false,
@@ -97,22 +97,22 @@
 
 
   <meta name="description" content="Git基本使用指南">
-<meta name="keywords" content="gitignore,git,仓库,代码管理,branch,tag,log,clone,diff,commit,checkout,pull,fetch,push,merge,reset,revert,remote">
+<meta name="keywords" content="git,仓库,代码管理,gitignore,branch,tag,log,clone,diff,commit,checkout,pull,fetch,push,merge,reset,revert,remote">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Git基本使用指南">
 <meta property="og:url" content="http://zileyuan.github.io/2018/01/22/git/index.html">
 <meta property="og:site_name" content="Zach&#39;s Blog">
 <meta property="og:description" content="Git基本使用指南">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://zileyuan.github.io/images/posts/git1.png">
-<meta property="og:image" content="http://zileyuan.github.io/images/posts/git2.png">
-<meta property="og:image" content="http://zileyuan.github.io/images/posts/git3.png">
-<meta property="og:image" content="http://zileyuan.github.io/images/posts/git4.png">
-<meta property="og:updated_time" content="2019-02-28T10:06:33.411Z">
+<meta property="og:image" content="http://zileyuan.github.io/images/posts/git/1.png">
+<meta property="og:image" content="http://zileyuan.github.io/images/posts/git/2.png">
+<meta property="og:image" content="http://zileyuan.github.io/images/posts/git/3.png">
+<meta property="og:image" content="http://zileyuan.github.io/images/posts/git/4.png">
+<meta property="og:updated_time" content="2019-03-01T03:49:48.648Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git基本使用指南">
 <meta name="twitter:description" content="Git基本使用指南">
-<meta name="twitter:image" content="http://zileyuan.github.io/images/posts/git1.png">
+<meta name="twitter:image" content="http://zileyuan.github.io/images/posts/git/1.png">
 
 
 
@@ -450,7 +450,7 @@
 <li><p>远程仓库<br> 服务器上的“版本库”，就相当于工作区下的.git文件夹</p>
 </li>
 </ol>
-<h2 id="工作区、版本库等关系"><a href="#工作区、版本库等关系" class="headerlink" title="工作区、版本库等关系"></a>工作区、版本库等关系</h2><p><img src="/images/posts/git1.png" alt="工作区、暂存区和版本库"><br><img src="/images/posts/git2.png" alt="工作区、暂存区和版本库"></p>
+<h2 id="工作区、版本库等关系"><a href="#工作区、版本库等关系" class="headerlink" title="工作区、版本库等关系"></a>工作区、版本库等关系</h2><p><img src="/images/posts/git/1.png" alt="工作区、暂存区和版本库"><br><img src="/images/posts/git/2.png" alt="工作区、暂存区和版本库"></p>
 <h1 id="仓库状态"><a href="#仓库状态" class="headerlink" title="仓库状态"></a>仓库状态</h1><h2 id="命令行"><a href="#命令行" class="headerlink" title="命令行"></a>命令行</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure>
 <h2 id="建议使用简化版"><a href="#建议使用简化版" class="headerlink" title="建议使用简化版"></a>建议使用简化版</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git status –s</span><br></pre></td></tr></table></figure>
 <h2 id="简化版各种标识"><a href="#简化版各种标识" class="headerlink" title="简化版各种标识"></a>简化版各种标识</h2><ul>
@@ -524,7 +524,7 @@
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 取消所有未提交的修改，恢复到最近一次提交</span></span><br><span class="line">git reset --hard HEAD</span><br><span class="line"><span class="comment"># 取消所有未提交的修改，回退到前一的版本</span></span><br><span class="line">git reset --hard HEAD^</span><br><span class="line"><span class="comment"># 取消所有未提交的修改，回退到前五的版本</span></span><br><span class="line">git reset --hard HEAD~5</span><br><span class="line"><span class="comment">#取消所有未提交的修改，回退到Commit（一般5位即可保证唯一性）的版本</span></span><br><span class="line">git reset --hard xxxxx</span><br></pre></td></tr></table></figure>
 <h2 id="git-revert"><a href="#git-revert" class="headerlink" title="git revert"></a>git revert</h2><p>撤销一个已经提交的快照，通过在最后加上一个撤销了更改的新提交，而不是从项目历史中移除这个提交。这避免了Git丢失项目历史，这一点对于你的版本历史和协作的可靠性来说是很重要的。</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 回到Commit，通过新增一个一个和Commit一样的版本在HEAD</span></span><br><span class="line">git revert &lt;commit&gt;</span><br><span class="line"><span class="comment"># 撤销上一次的提交，恢复到前一次</span></span><br><span class="line">git revert HEAD^</span><br></pre></td></tr></table></figure>
-<h2 id="比较reset和revert"><a href="#比较reset和revert" class="headerlink" title="比较reset和revert"></a>比较reset和revert</h2><p>如下图<br><img src="/images/posts/git3.png" alt="图例比较reset和revert"></p>
+<h2 id="比较reset和revert"><a href="#比较reset和revert" class="headerlink" title="比较reset和revert"></a>比较reset和revert</h2><p>如下图<br><img src="/images/posts/git/3.png" alt="图例比较reset和revert"></p>
 <h1 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a>远程仓库</h1><h2 id="基本概念-2"><a href="#基本概念-2" class="headerlink" title="基本概念"></a>基本概念</h2><ul>
 <li>origin<br>“origin” 是当你运行 git clone 时默认的跟踪远程仓库名字。如果你运行 git clone -o foo，那么你默认的跟踪远程分支名字将会是 foo/master。</li>
 <li>跟踪<br>远程跟踪分支是远程分支状态的引用（别名）。举例来说：假设你的网络里有一个在 git.ourcompany.com 的 Git 服务器。如果你从这里克隆，Git 的 clone 命令会为你自动将其命名为 origin，拉取它的所有数据，创建一个指向它的 master 分支的指针，并且在本地将其命名为 origin/master。Git 也会给你一个与 origin 的 master 分支在指向同一个地方的本地 master 分支，这样你就有工作的基础。（我们在讲解fetch和pull就会比较好理解了）</li>
@@ -543,7 +543,7 @@
 <h2 id="推送更新"><a href="#推送更新" class="headerlink" title="推送更新"></a>推送更新</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git push &lt;remote&gt; &lt;branch&gt;</span><br><span class="line">git push</span><br><span class="line"><span class="comment"># 默认执行：</span></span><br><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
 <h1 id="分支操作"><a href="#分支操作" class="headerlink" title="分支操作"></a>分支操作</h1><h2 id="分支基本功能"><a href="#分支基本功能" class="headerlink" title="分支基本功能"></a>分支基本功能</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 从当前分支进行创建</span></span><br><span class="line">git branch &lt;name&gt;</span><br><span class="line"><span class="comment"># 从指定分支或标签创建新分支</span></span><br><span class="line">git branch &lt;name&gt; &lt;from&gt;</span><br><span class="line"><span class="comment"># 从当前分支进行创建并切换到新分支</span></span><br><span class="line">git checkout -b &lt;name&gt;</span><br><span class="line"><span class="comment"># 从指定分支或标签进行创建并切换，from可以是远程分支</span></span><br><span class="line">git checkout -b &lt;name&gt; &lt;from&gt;</span><br><span class="line"><span class="comment"># 分支切换</span></span><br><span class="line">git checkout &lt;name&gt;</span><br><span class="line"><span class="comment"># 显示分支列表</span></span><br><span class="line">git branch</span><br><span class="line"><span class="comment"># 删除分支</span></span><br><span class="line">git branch -D &lt;name&gt;</span><br><span class="line"><span class="comment"># 分支提交到远程仓库并跟踪同步：关键参数--set-upstream</span></span><br><span class="line">git push --<span class="built_in">set</span>-upstream &lt;remote&gt; &lt;branch&gt;</span><br></pre></td></tr></table></figure>
 <h2 id="合并分支"><a href="#合并分支" class="headerlink" title="合并分支"></a>合并分支</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 把指定分支合并到当前分支（快进式合并）</span></span><br><span class="line">git merge &lt;branch&gt;</span><br><span class="line"><span class="comment"># 把指定分支合并到当前分支（非快进式合并，推荐）</span></span><br><span class="line">git merge --no-ff &lt;branch&gt;</span><br></pre></td></tr></table></figure>
-<p>两种合并的区别如图<br><img src="/images/posts/git4.png" alt="两种合并的区别"></p>
+<p>两种合并的区别如图<br><img src="/images/posts/git/4.png" alt="两种合并的区别"></p>
 <h2 id="删除远程分支"><a href="#删除远程分支" class="headerlink" title="删除远程分支"></a>删除远程分支</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git push &lt;remote&gt; --delete &lt;branch&gt;</span><br><span class="line">git push &lt;remote&gt; :&lt;branch&gt;</span><br></pre></td></tr></table></figure>
 <h1 id="标签操作"><a href="#标签操作" class="headerlink" title="标签操作"></a>标签操作</h1><h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 把在当前分支上最后commit打标签</span></span><br><span class="line">git tag &lt;name&gt;</span><br><span class="line"><span class="comment"># 把在当前分支上指定的commit打标签</span></span><br><span class="line">git tag &lt;name&gt; &lt;commit&gt;</span><br><span class="line"><span class="comment"># 标签加上描述信息</span></span><br><span class="line">git tag -a -m <span class="string">"message"</span> &lt;name&gt;</span><br><span class="line"><span class="comment"># 显示全部标签</span></span><br><span class="line">git tag</span><br><span class="line"><span class="comment"># 显示标签信息</span></span><br><span class="line">git show &lt;tag&gt;</span><br><span class="line"><span class="comment"># 删除标签</span></span><br><span class="line">git tag -d &lt;tag&gt;</span><br><span class="line"><span class="comment"># 推送指定标签到远程仓库</span></span><br><span class="line">git push &lt;remote&gt; &lt;tag-name&gt;</span><br><span class="line"><span class="comment"># 推送所有标签到远程仓库</span></span><br><span class="line">git push &lt;remote&gt; --tags</span><br></pre></td></tr></table></figure>
 <h2 id="删除远程标签"><a href="#删除远程标签" class="headerlink" title="删除远程标签"></a>删除远程标签</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git push &lt;remote&gt; --delete &lt;tag&gt;</span><br><span class="line">git push &lt;remote&gt; :&lt;tag&gt;</span><br></pre></td></tr></table></figure>
@@ -569,13 +569,13 @@
       
         <div class="post-tags">
           
-            <a href="/tags/gitignore/" rel="tag"># gitignore</a>
-          
             <a href="/tags/git/" rel="tag"># git</a>
           
             <a href="/tags/仓库/" rel="tag"># 仓库</a>
           
             <a href="/tags/代码管理/" rel="tag"># 代码管理</a>
+          
+            <a href="/tags/gitignore/" rel="tag"># gitignore</a>
           
             <a href="/tags/branch/" rel="tag"># branch</a>
           
@@ -695,7 +695,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-count">9</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -785,7 +785,21 @@
                     
                       
                     
-                    <span class="site-state-item-count">27</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">34</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -977,32 +991,32 @@
   
 
 
-  <script src="/js/src/utils.js?v=7.0.0"></script>
+  <script src="/js/src/utils.js?v=7.0.1"></script>
 
-  <script src="/js/src/motion.js?v=7.0.0"></script>
-
-
-
-  
-  
-
-
-  <script src="/js/src/affix.js?v=7.0.0"></script>
-
-  <script src="/js/src/schemes/pisces.js?v=7.0.0"></script>
+  <script src="/js/src/motion.js?v=7.0.1"></script>
 
 
 
   
-  <script src="/js/src/scrollspy.js?v=7.0.0"></script>
-<script src="/js/src/post-details.js?v=7.0.0"></script>
+  
+
+
+  <script src="/js/src/affix.js?v=7.0.1"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=7.0.1"></script>
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.1"></script>
+<script src="/js/src/post-details.js?v=7.0.1"></script>
 
 
 
   
 
 
-  <script src="/js/src/bootstrap.js?v=7.0.0"></script>
+  <script src="/js/src/bootstrap.js?v=7.0.1"></script>
 
 
   
