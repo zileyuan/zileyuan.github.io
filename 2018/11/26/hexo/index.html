@@ -96,25 +96,25 @@
 
 
 
-  <meta name="description" content="Babel的常用配置和解释，循序渐进">
-<meta name="keywords" content="babel,nodejs">
+  <meta name="description" content="hexo编写githubpages">
+<meta name="keywords" content="hexo,githubpages,github">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Babel的常用配置和解释">
-<meta property="og:url" content="http://blog.snakego.racing/2018/02/26/babel/index.html">
+<meta property="og:title" content="hexo编写githubpages">
+<meta property="og:url" content="http://blog.snakego.racing/2018/11/26/hexo/index.html">
 <meta property="og:site_name" content="Zach&#39;s Blog">
-<meta property="og:description" content="Babel的常用配置和解释，循序渐进">
+<meta property="og:description" content="hexo编写githubpages">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-26T08:55:39.717Z">
+<meta property="og:updated_time" content="2019-03-03T09:37:17.383Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Babel的常用配置和解释">
-<meta name="twitter:description" content="Babel的常用配置和解释，循序渐进">
+<meta name="twitter:title" content="hexo编写githubpages">
+<meta name="twitter:description" content="hexo编写githubpages">
 
 
 
 
 
 
-  <link rel="canonical" href="http://blog.snakego.racing/2018/02/26/babel/">
+  <link rel="canonical" href="http://blog.snakego.racing/2018/11/26/hexo/">
 
 
 
@@ -124,7 +124,7 @@
   };
 </script>
 
-  <title>Babel的常用配置和解释 | Zach's Blog</title>
+  <title>hexo编写githubpages | Zach's Blog</title>
   
 
 
@@ -327,7 +327,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.snakego.racing/2018/02/26/babel/">
+    <link itemprop="mainEntityOfPage" href="http://blog.snakego.racing/2018/11/26/hexo/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zach Yuan">
@@ -344,7 +344,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Babel的常用配置和解释
+          <h1 class="post-title" itemprop="name headline">hexo编写githubpages
 
               
             
@@ -370,7 +370,7 @@
                 
               
 
-              <time title="Created: 2018-02-26 15:22:41" itemprop="dateCreated datePublished" datetime="2018-02-26T15:22:41+08:00">2018-02-26</time>
+              <time title="Created: 2018-11-26 20:34:46" itemprop="dateCreated datePublished" datetime="2018-11-26T20:34:46+08:00">2018-11-26</time>
             
 
             
@@ -388,7 +388,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/nodejs/" itemprop="url" rel="index"><span itemprop="name">nodejs</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/hexo/" itemprop="url" rel="index"><span itemprop="name">hexo</span></a></span>
 
                 
                 
@@ -424,57 +424,31 @@
 
       
         <blockquote>
-<p>Babel的常用配置和解释，循序渐进</p>
+<p>hexo编写githubpages</p>
 </blockquote>
 <a id="more"></a>
-<h1 id="Babel的用途"><a href="#Babel的用途" class="headerlink" title="Babel的用途"></a>Babel的用途</h1><ul>
-<li>就是把不兼容的 JavaScript 代码转为可兼容，可以执行的 JavaScript 代码</li>
-<li>用于语法转义的配置。 preset-env / stage-x 主要用于 es 的语法转义</li>
-<li>用于不同框架的配置，如：react的jsx /flow 等</li>
-<li>用于补丁的配置，即 polyfill 的配置。主要是 transform-runtime</li>
-</ul>
-<h1 id="babelrc配置的基本"><a href="#babelrc配置的基本" class="headerlink" title="babelrc配置的基本"></a>babelrc配置的基本</h1><h2 id="基本"><a href="#基本" class="headerlink" title="基本"></a>基本</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">"presets"</span>: [],     <span class="comment">// 预设配置</span></span><br><span class="line">    <span class="string">"plugins"</span>: []      <span class="comment">// 插件配置</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>presets: 是某一类 plugin 的集合，包含了某一类插件的所有功能</li>
-<li>plugins: 将某一种需要转化的代码，转为浏览器可以执行代码</li>
-</ul>
-<h2 id="常见例子"><a href="#常见例子" class="headerlink" title="常见例子"></a>常见例子</h2><figure class="highlight"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"presets"</span>:[</span><br><span class="line">        <span class="string">"react"</span>,</span><br><span class="line">        ["env",&#123;...&#125;],</span><br><span class="line">        <span class="string">"stage-0"</span></span><br><span class="line">    ],</span><br><span class="line">    "plugins":[</span><br><span class="line">        "pluginName",</span><br><span class="line">        ["transform-runtime",&#123;...&#125;]</span><br><span class="line">    ],</span><br><span class="line">    "ignore":["path",'file'],</span><br><span class="line">    "miniied":boolean,</span><br><span class="line">    "comments":boolean,</span><br><span class="line">    "env":&#123;</span><br><span class="line">        "test":&#123;</span><br><span class="line">            "presets":[],</span><br><span class="line">            "plugins":[]</span><br><span class="line">        &#125;,</span><br><span class="line">        "production": &#123;</span><br><span class="line">           "plugins": ["transform-react-constant-elements"]</span><br><span class="line">        &#125;</span><br><span class="line">　　&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>ignore: 忽略的文件</li>
-<li>minify: 压缩代码</li>
-<li>common: 是否需要注释</li>
-<li>env: 设置不同的环境，应用不同的配置，配置取值：BABEL_ENV，如若没有取 NODE_ENV 的值，默认为 development.</li>
-</ul>
-<h1 id="配置执行顺序"><a href="#配置执行顺序" class="headerlink" title="配置执行顺序"></a>配置执行顺序</h1><ol>
-<li>执行 plugins 中所有的插件</li>
-<li>plugins 的插件，按照顺序依赖编译</li>
-<li>所有 plugins 的插件执行完成，在执行 presets 预设。</li>
-<li>presets 预设，按照倒序的顺序执行。(从最后一个执行)</li>
-<li>完成编译。</li>
-</ol>
-<h1 id="常用预设"><a href="#常用预设" class="headerlink" title="常用预设"></a>常用预设</h1><ul>
-<li>@babel/preset-env 一个智能预设，根据浏览器和运行环境，自动的确定 babel 插件和 polyfills 。没有任何配置的情况下，和 babel-preset-latest 一样 ( es2015/es2016/es2017一起使用 )。</li>
-<li>@babel/preset-react 一些react相关的集合。</li>
-<li>@babel/preset-typescript 一些typescript相关的集合。</li>
-<li>Stage 0 - 稻草人: 只是一个想法，可能是 babel 插件。</li>
-<li>Stage 1 - 提案: 初步尝试。</li>
-<li>Stage 2 - 初稿: 完成初步规范。</li>
-<li>Stage 3 - 候选: 完成规范和浏览器初步实现。</li>
-<li>Stage 4 - 完成: 将被添加到下一年度发布。</li>
-</ul>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"presets"</span>: [</span><br><span class="line">    [<span class="string">"@babel/preset-env"</span>, &#123;</span><br><span class="line">      <span class="attr">"loose"</span>: <span class="literal">true</span>,</span><br><span class="line">      <span class="attr">"modules"</span>: <span class="literal">false</span></span><br><span class="line">    &#125;]</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"presets"</span>: [<span class="string">"@babel/preset-stage-2"</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>@babel/preset-env 可以在配置里面简写成 env，同理其它</li>
-<li>@babel/preset-stage-2 可以在配置里面简写成 stage-2，同理其它</li>
-<li>@babel/preset-env 等都是npm包名，需要安装 npm install –save-dev @babel/preset-env</li>
-</ul>
-<h1 id="常用插件"><a href="#常用插件" class="headerlink" title="常用插件"></a>常用插件</h1><ul>
-<li>transform-async-to-generator: 异步函数 async/await 插件</li>
-<li>transform-decorators-leagacy: 装饰器插件</li>
-<li>transform-class-properties: 转换类属性插件</li>
-</ul>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"presets"</span>: [<span class="string">"env"</span>, <span class="string">"react"</span>],</span><br><span class="line">    <span class="attr">"plugins"</span>: [</span><br><span class="line">        <span class="string">"transform-decorators-legacy"</span>,</span><br><span class="line">        <span class="string">"transform-class-properties"</span></span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="hexo部署githubpages"><a href="#hexo部署githubpages" class="headerlink" title="hexo部署githubpages"></a>hexo部署githubpages</h1><p>hexo是nodejs开发的博客框架，下面简单记录一下搭建过程</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 安装hexo的命令行工具，请之前安装好nodejs</span></span><br><span class="line">npm install hexo-cli -g</span><br><span class="line"><span class="comment"># 初始化一个blog的目录</span></span><br><span class="line">hexo init blog</span><br><span class="line"><span class="built_in">cd</span> blog</span><br><span class="line"><span class="comment"># 安装nodejs依赖</span></span><br><span class="line">npm install</span><br><span class="line"><span class="comment"># 开启一个服务，在 http://localhost:4000 就可以看到博客页面了</span></span><br><span class="line">hexo server</span><br></pre></td></tr></table></figure>
+<h1 id="hexo一些常用命令"><a href="#hexo一些常用命令" class="headerlink" title="hexo一些常用命令"></a>hexo一些常用命令</h1><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 初始化一个博客</span></span><br><span class="line">hexo init [folder]</span><br><span class="line"><span class="comment"># 生成静态博客文件</span></span><br><span class="line">hexo generate <span class="comment"># 也可以简写 hexo g</span></span><br><span class="line"><span class="comment"># 开始本地测试服务</span></span><br><span class="line">hexo server <span class="comment"># 也可以简写 hexo s</span></span><br><span class="line"><span class="comment"># 部署到服务端</span></span><br><span class="line">hexo deploy <span class="comment"># 也可以简写 hexo d</span></span><br><span class="line"><span class="comment"># 清理文件和数据</span></span><br><span class="line">hexo clean</span><br></pre></td></tr></table></figure>
+<h1 id="hexo的配置简单设置和解释"><a href="#hexo的配置简单设置和解释" class="headerlink" title="hexo的配置简单设置和解释"></a>hexo的配置简单设置和解释</h1><p>在blog目录下的_config.yml就是hexo的一些设置，下面简单介绍</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">title:</span> <span class="comment"># 博客的标题</span></span><br><span class="line"><span class="attr">author:</span> <span class="comment"># 博主名称</span></span><br><span class="line"><span class="attr">url:</span> <span class="comment"># 设置博客的域名，一般在github上就是 xxx.github.io</span></span><br><span class="line"><span class="attr">theme:</span> <span class="comment"># 使用的主题，这儿我们使用的是next</span></span><br><span class="line"><span class="attr">deploy:</span> <span class="comment"># 一键发布的功能，</span></span><br><span class="line"><span class="attr">  type:</span> <span class="comment"># 设定协议，一般是git，需要安装 npm install hexo-deployer-git --save</span></span><br><span class="line"><span class="attr">  repo:</span> <span class="comment"># git的仓库地址</span></span><br></pre></td></tr></table></figure>
+<h1 id="使用next主题文件"><a href="#使用next主题文件" class="headerlink" title="使用next主题文件"></a>使用next主题文件</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>在博客项目目录里执行命令</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 使用git的模块功能</span></span><br><span class="line">git submodule add https://github.com/theme-next/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
+<h2 id="配置next"><a href="#配置next" class="headerlink" title="配置next"></a>配置next</h2><p>next默认使用source/_data/next.yml文件配置来覆盖默认的配置，如果没有该文件，请创建这个文件，该文件的设置可以参考next项目里面的_config.yml里面的设置，下面简单做一些常用设置</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">scheme:</span> <span class="comment"># 使用哪种界面方案</span></span><br><span class="line"><span class="attr">menu:</span> <span class="comment"># 显示的菜单</span></span><br><span class="line"><span class="attr">  home:</span> <span class="comment"># 显示主页</span></span><br><span class="line"><span class="attr">  tags:</span> <span class="comment"># 显示标签，创建方式见下节</span></span><br><span class="line"><span class="attr">  categories:</span> <span class="comment"># 显示分类，创建方式见下节</span></span><br><span class="line"><span class="attr">  archives:</span> <span class="comment"># 显示归档</span></span><br><span class="line"><span class="attr">social:</span> <span class="comment"># 显示一些社交信息</span></span><br><span class="line"><span class="attr">  GitHub:</span> <span class="comment"># github</span></span><br><span class="line"><span class="attr">  Twitter:</span> <span class="comment"># twitter</span></span><br><span class="line"><span class="attr">  E-Mail:</span> <span class="comment"># email</span></span><br><span class="line"><span class="attr">avatar:</span> <span class="comment"># 显示头像内容</span></span><br><span class="line"><span class="attr">  url:</span> <span class="comment"># 显示头像的图片</span></span><br><span class="line"><span class="attr">  rounded:</span> <span class="comment"># 是否圆角显示</span></span><br></pre></td></tr></table></figure>
+<p>hexo可以使用相对资源，比如上面的url可以设置为’/images/myavatar.png’,hexo会查找source/images下的myavatar.png图片，同理在博客的md里也可以这样引用图片。</p>
+<h2 id="创建分类和标签"><a href="#创建分类和标签" class="headerlink" title="创建分类和标签"></a>创建分类和标签</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 创建分类页面</span></span><br><span class="line">hexo new page categories</span><br><span class="line"><span class="comment"># 创建标签页面</span></span><br><span class="line">hexo new page tags</span><br></pre></td></tr></table></figure>
+<p>这时候会在source目录下创建了categories和tags目录，接下来编辑里面的index.md文件</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 在source/categories/index.md里面增加一句</span></span><br><span class="line"><span class="built_in">type</span>: <span class="string">"categories"</span></span><br><span class="line"><span class="comment"># 在source/tags/index.md里面增加一句</span></span><br><span class="line"><span class="built_in">type</span>: <span class="string">"tags"</span></span><br></pre></td></tr></table></figure>
+<p>这时候启动服务就看到了分类和标签了</p>
+<h1 id="开写博客"><a href="#开写博客" class="headerlink" title="开写博客"></a>开写博客</h1><p>在source下面创建一个主题md文件，例如 xyz.md</p>
+<p>在文件头上如下写法</p>
+<figure class="highlight md"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: xyz</span><br><span class="line">date: 2018-11-26 20:34:46</span><br><span class="line">categories:</span><br><span class="line"><span class="bullet">- </span>test-categories</span><br><span class="line">tags:</span><br><span class="line"><span class="bullet">- </span>xyz</span><br><span class="line"><span class="bullet">- </span>abc</span><br><span class="line"><span class="bullet">- </span>666</span><br><span class="line">---</span><br><span class="line"></span><br><span class="line"><span class="quote">&gt; xyz的一些用法</span></span><br><span class="line"></span><br><span class="line">&lt;!-- more --&gt;</span><br></pre></td></tr></table></figure>
+<p>在more后面就可以写正文了，解释一下</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">title: <span class="comment"># 文章标题</span></span><br><span class="line">date: <span class="comment"># 写作时间</span></span><br><span class="line">categories: <span class="comment"># 文章分类，在下面通过-写入</span></span><br><span class="line">tags: <span class="comment"># 文章标签，在下面通过-写入</span></span><br></pre></td></tr></table></figure>
+<p>more 标签会在页面显示”<strong>查看更多</strong>“按钮</p>
+<h1 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h1><p>此blog的git也可以进行源码管理，比如通过github，每次写好一篇文件，可以用命令发布到xxx.github.io仓库下，通过xxx.github.io的URL就可以查阅了。</p>
+
       
     </div>
 
@@ -497,9 +471,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/babel/" rel="tag"># babel</a>
+            <a href="/tags/hexo/" rel="tag"># hexo</a>
           
-            <a href="/tags/nodejs/" rel="tag"># nodejs</a>
+            <a href="/tags/githubpages/" rel="tag"># githubpages</a>
+          
+            <a href="/tags/github/" rel="tag"># github</a>
           
         </div>
       
@@ -512,8 +488,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/01/22/git/" rel="next" title="Git基本使用指南">
-                <i class="fa fa-chevron-left"></i> Git基本使用指南
+              <a href="/2018/09/24/npm/" rel="next" title="npm命令行和相关配置讲解">
+                <i class="fa fa-chevron-left"></i> npm命令行和相关配置讲解
               </a>
             
           </div>
@@ -521,10 +497,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/03/14/gitignore/" rel="prev" title="gitignore简单使用">
-                gitignore简单使用 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -798,7 +770,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Babel的用途"><span class="nav-number">1.</span> <span class="nav-text">Babel的用途</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#babelrc配置的基本"><span class="nav-number">2.</span> <span class="nav-text">babelrc配置的基本</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本"><span class="nav-number">2.1.</span> <span class="nav-text">基本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常见例子"><span class="nav-number">2.2.</span> <span class="nav-text">常见例子</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#配置执行顺序"><span class="nav-number">3.</span> <span class="nav-text">配置执行顺序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#常用预设"><span class="nav-number">4.</span> <span class="nav-text">常用预设</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#常用插件"><span class="nav-number">5.</span> <span class="nav-text">常用插件</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#hexo部署githubpages"><span class="nav-number">1.</span> <span class="nav-text">hexo部署githubpages</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hexo一些常用命令"><span class="nav-number">2.</span> <span class="nav-text">hexo一些常用命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hexo的配置简单设置和解释"><span class="nav-number">3.</span> <span class="nav-text">hexo的配置简单设置和解释</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用next主题文件"><span class="nav-number">4.</span> <span class="nav-text">使用next主题文件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">4.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置next"><span class="nav-number">4.2.</span> <span class="nav-text">配置next</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建分类和标签"><span class="nav-number">4.3.</span> <span class="nav-text">创建分类和标签</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#开写博客"><span class="nav-number">5.</span> <span class="nav-text">开写博客</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#写在最后"><span class="nav-number">6.</span> <span class="nav-text">写在最后</span></a></li></ol></div>
             
 
           </div>
