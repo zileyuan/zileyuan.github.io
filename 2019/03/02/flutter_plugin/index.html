@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.0.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.0.1',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false,"dimmer":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="flutter开发android和ios插件">
+<meta name="keywords" content="flutter,plugin,android,ios,友盟">
+<meta property="og:type" content="article">
+<meta property="og:title" content="flutter开发android和ios插件并发布到官方仓库">
+<meta property="og:url" content="http://blog.snakego.racing/2019/03/02/flutter_plugin/index.html">
+<meta property="og:site_name" content="Be a thinker">
+<meta property="og:description" content="flutter开发android和ios插件">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-03-10T08:12:32.213Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="flutter开发android和ios插件并发布到官方仓库">
+<meta name="twitter:description" content="flutter开发android和ios插件">
+
+
+
+
+
+
+  <link rel="canonical" href="http://blog.snakego.racing/2019/03/02/flutter_plugin/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>flutter开发android和ios插件并发布到官方仓库 | Be a thinker</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Be a thinker</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">Just funning</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.snakego.racing/2019/03/02/flutter_plugin/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zach Yuan">
+      <meta itemprop="description" content="Thinking and thinking">
+      <meta itemprop="image" content="/images/avatar/1551152468450.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Be a thinker">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">flutter开发android和ios插件并发布到官方仓库
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-03-02 21:26:56" itemprop="dateCreated datePublished" datetime="2019-03-02T21:26:56+08:00">2019-03-02</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/flutter/" itemprop="url" rel="index"><span itemprop="name">flutter</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>flutter开发android和ios插件</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="创建插件模板"><a href="#创建插件模板" class="headerlink" title="创建插件模板"></a>创建插件模板</h1><p>以创建友盟分析插件为例子，来进行操作</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 还可以使用--ios-language和--android-language来指定插件开发语言</span></span><br><span class="line">flutter create --template=plugin --org io.github.zileyuan umeng_analytics</span><br></pre></td></tr></table></figure>
+<h1 id="实现android部分"><a href="#实现android部分" class="headerlink" title="实现android部分"></a>实现android部分</h1><p>加入友盟分析的gradle依赖</p>
+<figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 在build.gradle最后增加</span></span><br><span class="line">dependencies &#123;</span><br><span class="line">    api <span class="string">'com.umeng.sdk:common:1.5.3'</span></span><br><span class="line">    api <span class="string">'com.umeng.sdk:analytics:7.5.3'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>实现android平台的代码</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// io.github.zileyuan.umeng_analytics.UmengAnalyticsPlugin.java 文件加入</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">package</span> io.github.zileyuan.umeng_analytics;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> io.flutter.plugin.common.MethodCall;</span><br><span class="line"><span class="keyword">import</span> io.flutter.plugin.common.MethodChannel;</span><br><span class="line"><span class="keyword">import</span> io.flutter.plugin.common.MethodChannel.MethodCallHandler;</span><br><span class="line"><span class="keyword">import</span> io.flutter.plugin.common.MethodChannel.Result;</span><br><span class="line"><span class="keyword">import</span> io.flutter.plugin.common.PluginRegistry.Registrar;</span><br><span class="line"><span class="keyword">import</span> com.umeng.analytics.MobclickAgent;</span><br><span class="line"><span class="keyword">import</span> com.umeng.commonsdk.UMConfigure;</span><br><span class="line"><span class="keyword">import</span> android.app.Activity;</span><br><span class="line"></span><br><span class="line"><span class="comment">/** UmengAnalyticsPlugin */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UmengAnalyticsPlugin</span> <span class="keyword">implements</span> <span class="title">MethodCallHandler</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> Activity activity;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/** Plugin registration. */</span></span><br><span class="line">  <span class="comment">// 插件注册</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">registerWith</span><span class="params">(Registrar registrar)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">final</span> MethodChannel channel = <span class="keyword">new</span> MethodChannel(registrar.messenger(), <span class="string">"umeng_analytics"</span>);</span><br><span class="line">    channel.setMethodCallHandler(<span class="keyword">new</span> UmengAnalyticsPlugin(registrar.activity()));</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 私有的构造函数，传入activity，保留在后面使用</span></span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="title">UmengAnalyticsPlugin</span><span class="params">(Activity activity)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.activity = activity;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onMethodCall</span><span class="params">(MethodCall call, Result result)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (call.method.equals(<span class="string">"init"</span>)) &#123;</span><br><span class="line">      <span class="keyword">boolean</span> res = init(call, result);</span><br><span class="line">      result.success(res);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      result.notImplemented();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 调用友盟分析的init接口</span></span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">init</span><span class="params">(MethodCall call, Result result)</span> </span>&#123;</span><br><span class="line">    String appKey = call.argument(<span class="string">"key"</span>);</span><br><span class="line">    String channel = call.argument(<span class="string">"channel"</span>);</span><br><span class="line">    Integer deviceType = call.argument(<span class="string">"deviceType"</span>);</span><br><span class="line">    UMConfigure.init(activity, appKey, channel, deviceType, <span class="keyword">null</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (call.hasArgument(<span class="string">"logEnable"</span>))</span><br><span class="line">      UMConfigure.setLogEnabled((Boolean) call.argument(<span class="string">"logEnable"</span>));</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (call.hasArgument(<span class="string">"encrypt"</span>))</span><br><span class="line">      UMConfigure.setEncryptEnabled((Boolean) call.argument(<span class="string">"encrypt"</span>));</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (call.hasArgument(<span class="string">"reportCrash"</span>))</span><br><span class="line">      MobclickAgent.setCatchUncaughtExceptions((Boolean) call.argument(<span class="string">"reportCrash"</span>));</span><br><span class="line"></span><br><span class="line">    MobclickAgent.openActivityDurationTrack(<span class="keyword">false</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="实现ios部分"><a href="#实现ios部分" class="headerlink" title="实现ios部分"></a>实现ios部分</h1><p>加入友盟分析的pod依赖</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># umeng_analytics.podspec 文件的s.dependency &apos;Flutter&apos;后面加入</span><br><span class="line">s.dependency &apos;UMCCommon&apos;</span><br><span class="line">s.dependency &apos;UMCAnalytics&apos;</span><br></pre></td></tr></table></figure>
+<p>实现ios平台的代码(方式和android类似)</p>
+<figure class="highlight objc"><table><tr><td class="code"><pre><span class="line"><span class="comment">// UmengAnalyticsPlugin.m 文件加入</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#import <span class="meta-string">"UmengAnalyticsPlugin.h"</span></span></span><br><span class="line"><span class="meta">#import <span class="meta-string">&lt;UMCommon/UMCommon.h&gt;</span></span></span><br><span class="line"><span class="meta">#import <span class="meta-string">&lt;UMAnalytics/MobClick.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">UmengAnalyticsPlugin</span></span></span><br><span class="line">+ (<span class="keyword">void</span>)registerWithRegistrar:(<span class="built_in">NSObject</span>&lt;FlutterPluginRegistrar&gt;*)registrar &#123;</span><br><span class="line">  FlutterMethodChannel* channel = [FlutterMethodChannel</span><br><span class="line">      methodChannelWithName:<span class="string">@"umeng_analytics"</span></span><br><span class="line">            binaryMessenger:[registrar messenger]];</span><br><span class="line">  UmengAnalyticsPlugin* instance = [[UmengAnalyticsPlugin alloc] init];</span><br><span class="line">  [registrar addMethodCallDelegate:instance channel:channel];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)handleMethodCall:(FlutterMethodCall*)call result:(FlutterResult)result &#123;</span><br><span class="line">  <span class="keyword">if</span> ([<span class="string">@"init"</span> isEqualToString:call.method]) &#123;</span><br><span class="line">      [<span class="keyword">self</span> init:call result:result];</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      result(FlutterMethodNotImplemented);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)init:(FlutterMethodCall *)call result:(FlutterResult)result &#123;</span><br><span class="line">  <span class="built_in">NSString</span> *appKey = call.arguments[<span class="string">@"key"</span>];</span><br><span class="line"></span><br><span class="line">  <span class="built_in">NSString</span> *channel = call.arguments[<span class="string">@"channel"</span>];</span><br><span class="line">  <span class="keyword">if</span> (!channel) channel = <span class="string">@"default"</span>;</span><br><span class="line"></span><br><span class="line">  [UMConfigure initWithAppkey:appKey channel:channel];</span><br><span class="line"></span><br><span class="line">  <span class="built_in">NSNumber</span> *reportCrash = call.arguments[<span class="string">@"reportCrash"</span>];</span><br><span class="line">  <span class="keyword">if</span> (reportCrash) [MobClick setCrashReportEnabled:[reportCrash boolValue]];</span><br><span class="line"></span><br><span class="line">  <span class="built_in">NSNumber</span> *logEnable = call.arguments[<span class="string">@"logEnable"</span>];</span><br><span class="line">  <span class="keyword">if</span> (logEnable) [UMConfigure setLogEnabled:[logEnable boolValue]];</span><br><span class="line"></span><br><span class="line">  <span class="built_in">NSNumber</span> *encrypt = call.arguments[<span class="string">@"encrypt"</span>];</span><br><span class="line">  <span class="keyword">if</span> (encrypt) [UMConfigure setEncryptEnabled:[encrypt boolValue]];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+<h1 id="实现插件lib的umeng-analytics-dart文件"><a href="#实现插件lib的umeng-analytics-dart文件" class="headerlink" title="实现插件lib的umeng_analytics.dart文件"></a>实现插件lib的umeng_analytics.dart文件</h1><figure class="highlight dart"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">'dart:async'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">'package:flutter/services.dart'</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Policy</span> </span>&#123;</span><br><span class="line">  <span class="keyword">static</span> <span class="keyword">final</span> <span class="built_in">int</span> REALTIME = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">static</span> <span class="keyword">final</span> <span class="built_in">int</span> BATCH = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">static</span> <span class="keyword">final</span> <span class="built_in">int</span> SEND_INTERVAL = <span class="number">6</span>;</span><br><span class="line">  <span class="keyword">static</span> <span class="keyword">final</span> <span class="built_in">int</span> SMART_POLICY = <span class="number">8</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UmengAnalytics</span> </span>&#123;</span><br><span class="line">  <span class="keyword">static</span> <span class="keyword">const</span> DEVICE_TYPE_PHONE = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">static</span> <span class="keyword">const</span> DEVICE_TYPE_BOX = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">static</span> <span class="keyword">const</span> MethodChannel _channel =</span><br><span class="line">      <span class="keyword">const</span> MethodChannel(<span class="string">'umeng_analytics'</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 暴露给使用者的接口</span></span><br><span class="line">  <span class="keyword">static</span> Future&lt;<span class="built_in">bool</span>&gt; init(</span><br><span class="line">    <span class="built_in">String</span> key, &#123;</span><br><span class="line">    <span class="built_in">int</span> deviceType = DEVICE_TYPE_PHONE,</span><br><span class="line">    <span class="built_in">String</span> channel = <span class="string">'default'</span>,</span><br><span class="line">    <span class="built_in">int</span> policy,</span><br><span class="line">    <span class="built_in">bool</span> reportCrash,</span><br><span class="line">    <span class="built_in">bool</span> encrypt,</span><br><span class="line">    <span class="built_in">double</span> interval,</span><br><span class="line">    <span class="built_in">bool</span> logEnable,</span><br><span class="line">  &#125;) <span class="keyword">async</span> &#123;</span><br><span class="line">    <span class="built_in">Map</span>&lt;<span class="built_in">String</span>, <span class="keyword">dynamic</span>&gt; args = &#123;</span><br><span class="line">      <span class="string">'key'</span>: key,</span><br><span class="line">      <span class="string">'deviceType'</span>: deviceType,</span><br><span class="line">      <span class="string">'channel'</span>: channel,</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (policy != <span class="keyword">null</span>) args[<span class="string">'policy'</span>] = policy;</span><br><span class="line">    <span class="keyword">if</span> (reportCrash != <span class="keyword">null</span>) args[<span class="string">'reportCrash'</span>] = reportCrash;</span><br><span class="line">    <span class="keyword">if</span> (encrypt != <span class="keyword">null</span>) args[<span class="string">'encrypt'</span>] = encrypt;</span><br><span class="line">    <span class="keyword">if</span> (interval != <span class="keyword">null</span>) args[<span class="string">'interval'</span>] = interval;</span><br><span class="line">    <span class="keyword">if</span> (logEnable != <span class="keyword">null</span>) args[<span class="string">'logEnable'</span>] = logEnable;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 调用原生代码中的init方法，并传入参数</span></span><br><span class="line">    <span class="keyword">await</span> _channel.invokeMethod(<span class="string">'init'</span>, args);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="在插件目录的example里测试"><a href="#在插件目录的example里测试" class="headerlink" title="在插件目录的example里测试"></a>在插件目录的example里测试</h1><p>实现example里面的main.dart文件，比较简单就不详述了</p>
+<figure class="highlight dart"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">'package:flutter/material.dart'</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">'package:umeng_analytics/umeng_analytics.dart'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> main() =&gt; runApp(MyApp());</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyApp</span> <span class="keyword">extends</span> <span class="title">StatefulWidget</span> </span>&#123;</span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  _MyAppState createState() =&gt; _MyAppState();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">_MyAppState</span> <span class="keyword">extends</span> <span class="title">State</span>&lt;<span class="title">MyApp</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  <span class="keyword">void</span> initState() &#123;</span><br><span class="line">    <span class="keyword">super</span>.initState();</span><br><span class="line">    <span class="comment">// 此处换成你的友盟的appid</span></span><br><span class="line">    UmengAnalytics.init(<span class="string">'5c7cfb8761f56426a50016e6'</span>,</span><br><span class="line">          policy: Policy.BATCH, encrypt: <span class="keyword">true</span>, reportCrash: <span class="keyword">false</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    <span class="keyword">return</span> MaterialApp(</span><br><span class="line">      home: Scaffold(</span><br><span class="line">        appBar: AppBar(</span><br><span class="line">          title: <span class="keyword">const</span> Text(<span class="string">'Plugin example app'</span>),</span><br><span class="line">        ),</span><br><span class="line">        body: Center(</span><br><span class="line">          child: Text(<span class="string">'UmengAnalytics on\n'</span>),</span><br><span class="line">        ),</span><br><span class="line">      ),</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="发布插件到官方仓库"><a href="#发布插件到官方仓库" class="headerlink" title="发布插件到官方仓库"></a>发布插件到官方仓库</h1><h2 id="终端可翻墙"><a href="#终端可翻墙" class="headerlink" title="终端可翻墙"></a>终端可翻墙</h2><p>发布需要在终端翻墙，如果你使用SS或V2之类，请在终端先执行（注意端口请查阅你的SS或V2设置）</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">export</span> http_proxy=http://127.0.0.1:1081</span><br><span class="line"><span class="built_in">export</span> https_proxy=http://127.0.0.1:1081</span><br></pre></td></tr></table></figure>
+<h2 id="发布前检查"><a href="#发布前检查" class="headerlink" title="发布前检查"></a>发布前检查</h2><p>发布前可以进行工具检查,如果有问题会提示，比较简单就不详述了</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 需要加上参数--server=https://pub.dartlang.org</span></span><br><span class="line"><span class="comment"># 因为国内的开发者一般都设置了</span></span><br><span class="line"><span class="comment"># PUB_HOSTED_URL=https://pub.flutter-io.cn</span></span><br><span class="line"><span class="comment"># FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn</span></span><br><span class="line">flutter packages pub publish --dry-run --server=https://pub.dartlang.org</span><br></pre></td></tr></table></figure>
+<h2 id="正式发布"><a href="#正式发布" class="headerlink" title="正式发布"></a>正式发布</h2><p>正式发布需要一个google账号，在发布时候需要你进行授权</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">flutter packages pub publish --server=https://pub.dartlang.org</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/flutter/" rel="tag"># flutter</a>
+          
+            <a href="/tags/plugin/" rel="tag"># plugin</a>
+          
+            <a href="/tags/android/" rel="tag"># android</a>
+          
+            <a href="/tags/ios/" rel="tag"># ios</a>
+          
+            <a href="/tags/友盟/" rel="tag"># 友盟</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/26/hexo/" rel="next" title="hexo编写githubpages">
+                <i class="fa fa-chevron-left"></i> hexo编写githubpages
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar/1551152468450.jpg" alt="Zach Yuan">
+            
+              <p class="site-author-name" itemprop="name">Zach Yuan</p>
+              <p class="site-description motion-element" itemprop="description">Thinking and thinking</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">43</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/zileyuan" title="GitHub &rarr; https://github.com/zileyuan" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://twitter.com/zileyuan" title="Twitter &rarr; https://twitter.com/zileyuan" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:zileyuan@gmail.com" title="E-Mail &rarr; mailto:zileyuan@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#创建插件模板"><span class="nav-number">1.</span> <span class="nav-text">创建插件模板</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实现android部分"><span class="nav-number">2.</span> <span class="nav-text">实现android部分</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实现ios部分"><span class="nav-number">3.</span> <span class="nav-text">实现ios部分</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实现插件lib的umeng-analytics-dart文件"><span class="nav-number">4.</span> <span class="nav-text">实现插件lib的umeng_analytics.dart文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#在插件目录的example里测试"><span class="nav-number">5.</span> <span class="nav-text">在插件目录的example里测试</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#发布插件到官方仓库"><span class="nav-number">6.</span> <span class="nav-text">发布插件到官方仓库</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#终端可翻墙"><span class="nav-number">6.1.</span> <span class="nav-text">终端可翻墙</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#发布前检查"><span class="nav-number">6.2.</span> <span class="nav-text">发布前检查</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正式发布"><span class="nav-number">6.3.</span> <span class="nav-text">正式发布</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zach Yuan</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a></div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.1"></script>
+
+  <script src="/js/src/motion.js?v=7.0.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/affix.js?v=7.0.1"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=7.0.1"></script>
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.1"></script>
+<script src="/js/src/post-details.js?v=7.0.1"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=7.0.1"></script>
+
+
+  
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
