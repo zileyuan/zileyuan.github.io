@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.0.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.0.1',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false,"dimmer":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="ES6/ES7/ES8新特性">
+<meta name="keywords" content="nodejs,ES6,ES2015,ES7,ES2016,ES8,ES2017">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ES6&#x2F;ES7&#x2F;ES8新特性">
+<meta property="og:url" content="http://blog.snakego.racing/2018/07/21/es_new_feature/index.html">
+<meta property="og:site_name" content="Be a thinker">
+<meta property="og:description" content="ES6/ES7/ES8新特性">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-03-25T15:12:38.522Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ES6&#x2F;ES7&#x2F;ES8新特性">
+<meta name="twitter:description" content="ES6/ES7/ES8新特性">
+
+
+
+
+
+
+  <link rel="canonical" href="http://blog.snakego.racing/2018/07/21/es_new_feature/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>ES6/ES7/ES8新特性 | Be a thinker</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Be a thinker</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">Just funning</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.snakego.racing/2018/07/21/es_new_feature/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zach Yuan">
+      <meta itemprop="description" content="Thinking and thinking">
+      <meta itemprop="image" content="/images/avatar/1551152468450.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Be a thinker">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">ES6/ES7/ES8新特性
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-07-21 07:37:34" itemprop="dateCreated datePublished" datetime="2018-07-21T07:37:34+08:00">2018-07-21</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/nodejs/" itemprop="url" rel="index"><span itemprop="name">nodejs</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">8.5k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">8 mins.</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>ES6/ES7/ES8新特性</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="ES6-ES2015-常用新特性"><a href="#ES6-ES2015-常用新特性" class="headerlink" title="ES6(ES2015)常用新特性"></a>ES6(ES2015)常用新特性</h1><h2 id="let-amp-amp-const"><a href="#let-amp-amp-const" class="headerlink" title="let &amp;&amp; const"></a>let &amp;&amp; const</h2><p>let 命令也用于变量声明，但是作用域为局部</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="keyword">let</span> a = <span class="number">10</span>;</span><br><span class="line">    <span class="keyword">var</span> b = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在函数外部可以获取到b，获取不到a，因此例如for循环计数器就适合使用let。</p>
+<p>const用于声明一个常量，设定后值不会再改变</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> PI = <span class="number">3.1415</span>;</span><br><span class="line">PI <span class="comment">// 3.1415</span></span><br><span class="line">PI = <span class="number">3</span>; <span class="comment">//TypeError: Assignment to constant variable.</span></span><br></pre></td></tr></table></figure>
+<h2 id="iterable类型"><a href="#iterable类型" class="headerlink" title="iterable类型"></a>iterable类型</h2><p>为了统一集合类型，ES6标准引入了新的iterable类型，Array、Map和Set都属于iterable类型，具有iterable类型的集合可以通过新的for … of循环来遍历。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = [<span class="string">'A'</span>, <span class="string">'B'</span>, <span class="string">'C'</span>];</span><br><span class="line"><span class="keyword">var</span> s = <span class="keyword">new</span> <span class="built_in">Set</span>([<span class="string">'A'</span>, <span class="string">'B'</span>, <span class="string">'C'</span>]);</span><br><span class="line"><span class="keyword">var</span> m = <span class="keyword">new</span> <span class="built_in">Map</span>([[<span class="number">1</span>, <span class="string">'x'</span>], [<span class="number">2</span>, <span class="string">'y'</span>], [<span class="number">3</span>, <span class="string">'z'</span>]]);</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> x <span class="keyword">of</span> a) &#123; <span class="comment">// 遍历Array</span></span><br><span class="line">    alert(x);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> x <span class="keyword">of</span> s) &#123; <span class="comment">// 遍历Set</span></span><br><span class="line">    alert(x);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> x <span class="keyword">of</span> m) &#123; <span class="comment">// 遍历Map</span></span><br><span class="line">    alert(x[<span class="number">0</span>] + <span class="string">'='</span> + x[<span class="number">1</span>]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="解构赋值"><a href="#解构赋值" class="headerlink" title="解构赋值"></a>解构赋值</h2><p>ES6 允许按照一定模式，从数组和对象中提取值，对变量进行赋值，这被称为解构（Destructuring）。 例如数组：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> [a, b, c] = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line"><span class="comment">//等同于</span></span><br><span class="line"><span class="keyword">let</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">let</span> b = <span class="number">2</span>;</span><br><span class="line"><span class="keyword">let</span> c = <span class="number">3</span>;</span><br></pre></td></tr></table></figure>
+<p>这真的让代码看起来更优美，有种python赋值的既视感。</p>
+<p>对象的解构赋值：获取对象的多个属性并且使用一条语句将它们赋给多个变量。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> &#123;</span><br><span class="line">  StyleSheet,</span><br><span class="line">  Text,</span><br><span class="line">  View</span><br><span class="line">&#125; = React;</span><br><span class="line"></span><br><span class="line">等同于</span><br><span class="line"><span class="keyword">var</span> StyleSheet = React.StyleSheet;</span><br><span class="line"><span class="keyword">var</span> Text = React.Text;</span><br><span class="line"><span class="keyword">var</span> View = React.Text;</span><br></pre></td></tr></table></figure>
+<h2 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h2><p>ES6中新增箭头操作符用于简化函数的写法，操作符左边为参数，右边为具体操作和返回值。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> sum = <span class="function">(<span class="params">num1, num2</span>) =&gt;</span> &#123; <span class="keyword">return</span> num1 + num2; &#125;</span><br><span class="line"><span class="comment">//等同于</span></span><br><span class="line"><span class="keyword">var</span> sum = <span class="function"><span class="keyword">function</span>(<span class="params">num1, num2</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> num1 + num2;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>箭头函数还修复了this的指向，使其永远指向词法作用域：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    birth: <span class="number">1990</span>,</span><br><span class="line">    getAge: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> b = <span class="keyword">this</span>.birth; <span class="comment">// 1990</span></span><br><span class="line">        <span class="keyword">var</span> fn = <span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">new</span> <span class="built_in">Date</span>().getFullYear() - <span class="keyword">this</span>.birth; <span class="comment">// this指向obj对象</span></span><br><span class="line">        <span class="keyword">return</span> fn();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">obj.getAge(); <span class="comment">// 25</span></span><br></pre></td></tr></table></figure>
+<h2 id="…操作符"><a href="#…操作符" class="headerlink" title="…操作符"></a>…操作符</h2><p>这个的引入几乎不会用到extend这个函数来。通过它可以将数组作为参数直接传入函数：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> people=[<span class="string">'Wayou'</span>,<span class="string">'John'</span>,<span class="string">'Sherlock'</span>];</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayHello</span>(<span class="params">people1,people2,people3</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`Hello <span class="subst">$&#123;people1&#125;</span>,<span class="subst">$&#123;people2&#125;</span>,<span class="subst">$&#123;people3&#125;</span>`</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//改写为</span></span><br><span class="line">sayHello(...people);<span class="comment">//输出：Hello Wayou,John,Sherlock</span></span><br></pre></td></tr></table></figure>
+<p>在函数定义时可以通过…rest获取定义参数外的所有参数（类似C#中的参数数组，可以有任意多个参数）：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">a, b, ...rest</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'a = '</span> + a);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'b = '</span> + b);</span><br><span class="line">    <span class="built_in">console</span>.log(rest);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">foo(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>);</span><br><span class="line"><span class="comment">// 结果:</span></span><br><span class="line"><span class="comment">// a = 1</span></span><br><span class="line"><span class="comment">// b = 2</span></span><br><span class="line"><span class="comment">// Array [ 3, 4, 5 ]</span></span><br></pre></td></tr></table></figure>
+<h2 id="类"><a href="#类" class="headerlink" title="类"></a>类</h2><p>ES6提供了更接近传统语言的写法，引入了Class（类）这个概念，作为对象的模板。通过class关键字，可以定义类，与多数传统语言类似。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//定义类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Point</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(x, y) &#123;</span><br><span class="line">    <span class="keyword">this</span>.x = x;</span><br><span class="line">    <span class="keyword">this</span>.y = y;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  toString() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'('</span> + <span class="keyword">this</span>.x + <span class="string">', '</span> + <span class="keyword">this</span>.y + <span class="string">')'</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="ES7-ES2016-常用新特性"><a href="#ES7-ES2016-常用新特性" class="headerlink" title="ES7(ES2016)常用新特性"></a>ES7(ES2016)常用新特性</h1><h2 id="Array-prototype-includes"><a href="#Array-prototype-includes" class="headerlink" title="Array.prototype.includes"></a>Array.prototype.includes</h2><p>Array.prototype.includes用法都容易和简单。它是一个替代indexOf，开发人员用来检查数组中是否存在值，indexOf是一种尴尬的使用，因为它返回一个元素在数组中的位置或者-1当这样的元素不能被找到的情况下。所以它返回一个数字，而不是一个布尔值。开发人员需要实施额外的检查。在ES6，要检查是否存在值你需要做一些如下图所示小技巧，因为他们没有匹配到值，Array.prototype.indexOf返回-1变成了true（转换成true），但是当匹配的元素为0位置时候，该数组包含元素，却变成了false。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="string">'react'</span>, <span class="string">'angular'</span>, <span class="string">'vue'</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">// WRONG</span></span><br><span class="line"><span class="keyword">if</span> (arr.indexOf(<span class="string">'react'</span>)) &#123; <span class="comment">// 0 -&gt; evaluates to false, definitely as we expected</span></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'Can use React'</span>) <span class="comment">// this line would never be executed</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Correct</span></span><br><span class="line"><span class="keyword">if</span> (arr.indexOf(<span class="string">'react'</span>) !== <span class="number">-1</span>) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'Can use React'</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>或者使用一点点hack 位运算符 ~ 使代码更加紧凑一些，因为~（位异或）对任何数字相当于-(a + 1):</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="string">'react'</span>, <span class="string">'angular'</span>, <span class="string">'vue'</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">// Correct</span></span><br><span class="line"><span class="keyword">if</span> (~arr.indexOf(<span class="string">'react'</span>)) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'Can use React'</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在ES7中使用includes代码如下:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="string">'react'</span>, <span class="string">'angular'</span>, <span class="string">'vue'</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">// Correct</span></span><br><span class="line"><span class="keyword">if</span> (arr.includes(<span class="string">'react'</span>)) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'Can use React'</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>还能在字符串中使用includes:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">'React Quickly'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Correct</span></span><br><span class="line"><span class="keyword">if</span> (str.toLowerCase().includes(<span class="string">'react'</span>)) &#123;  <span class="comment">// true</span></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'Found "react"'</span>)  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>除了增强了可读性语义化，实际上给开发者返回布尔值，而不是匹配的位置。</p>
+<p><code>includes</code>也可以在<code>NaN</code>(非数字)使用。最后 ，<code>includes</code>第二可选参数<code>fromIndex</code>，这对于优化是有好处的，因为它允许从特定位置开始寻找匹配。<br>更多例子：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>].includes(<span class="number">2</span>)) <span class="comment">// === true)</span></span><br><span class="line"><span class="built_in">console</span>.log([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>].includes(<span class="number">4</span>)) <span class="comment">// === false)</span></span><br><span class="line"><span class="built_in">console</span>.log([<span class="number">1</span>, <span class="number">2</span>, <span class="literal">NaN</span>].includes(<span class="literal">NaN</span>)) <span class="comment">// === true)</span></span><br><span class="line"><span class="built_in">console</span>.log([<span class="number">1</span>, <span class="number">2</span>, <span class="number">-0</span>].includes(+<span class="number">0</span>)) <span class="comment">// === true)</span></span><br><span class="line"><span class="built_in">console</span>.log([<span class="number">1</span>, <span class="number">2</span>, +<span class="number">0</span>].includes(<span class="number">-0</span>)) <span class="comment">// === true)</span></span><br><span class="line"><span class="built_in">console</span>.log([<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>].includes(<span class="string">'a'</span>)) <span class="comment">// === true)</span></span><br><span class="line"><span class="built_in">console</span>.log([<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>].includes(<span class="string">'a'</span>, <span class="number">1</span>)) <span class="comment">// === false)</span></span><br></pre></td></tr></table></figure>
+<p>总而言之，includes在一个数组或者列表中检查是否存在一个值，给任何开发人员带来简单性。</p>
+<h2 id="Exponentiation-Operator-求幂运算"><a href="#Exponentiation-Operator-求幂运算" class="headerlink" title="Exponentiation Operator(求幂运算)"></a>Exponentiation Operator(求幂运算)</h2><p>求幂运算大多数是做一些数学计算，对于3D，VR，SVG还有数据可视化非常有用。在ES6或者早些版本，不得不创建一个循环，创建一个递归函数或者使用Math.pow,如果忘记了什么是指数,当你有相同数字（基数）自相相乘多次（指数）。例如，7的3次方是7<em>7</em>7</p>
+<p>现在在ES7 /ES2016，以数学向导的开发者可以使用更短的语法:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="number">7</span> ** <span class="number">12</span></span><br><span class="line"><span class="keyword">let</span> b = <span class="number">2</span> ** <span class="number">7</span></span><br><span class="line"><span class="built_in">console</span>.log(a === <span class="built_in">Math</span>.pow(<span class="number">7</span>,<span class="number">12</span>)) <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(b === <span class="built_in">Math</span>.pow(<span class="number">2</span>,<span class="number">7</span>)) <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<p>开发者还可以操作结果:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="number">7</span></span><br><span class="line">a **= <span class="number">12</span></span><br><span class="line"><span class="keyword">let</span> b = <span class="number">2</span></span><br><span class="line">b **= <span class="number">7</span></span><br><span class="line"><span class="built_in">console</span>.log(a === <span class="built_in">Math</span>.pow(<span class="number">7</span>,<span class="number">12</span>)) <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(b === <span class="built_in">Math</span>.pow(<span class="number">2</span>,<span class="number">7</span>)) <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<h1 id="ES8-ES2017-常用新特性"><a href="#ES8-ES2017-常用新特性" class="headerlink" title="ES8(ES2017)常用新特性"></a>ES8(ES2017)常用新特性</h1><h2 id="Object-values-Object-entries"><a href="#Object-values-Object-entries" class="headerlink" title="Object.values/Object.entries"></a>Object.values/Object.entries</h2><p><code>Object.values</code>和 <code>Object.entries</code>是在ES2017规格中，它和<code>Object.keys</code>类似，返回数组类型，其序号和<code>Object.keys</code>序号对应。类似python中的dict.iteritems()。<br><code>Object.values</code>,<code>Object.entries</code>和<code>Object.keys</code>各自项返回是数组，相对应包括key,value或者可枚举特定对象property/attribute<br>在ES8 /ES2017之前，Javascript开发者需要迭代一个对象的自身属性时候不得不用<code>Object.keys</code>，通过迭代且使用<code>obj[key]</code>获取value值返回一个数组，很挫：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;<span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: <span class="number">2</span>, <span class="attr">c</span>: <span class="number">3</span>&#125;</span><br><span class="line"><span class="built_in">Object</span>.keys(obj).forEach(<span class="function">(<span class="params">key, index</span>)=&gt;</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(key, obj[key])</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>而使用ES6/ES2015 中for/of稍微好点：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;<span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: <span class="number">2</span>, <span class="attr">c</span>: <span class="number">3</span>&#125;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">of</span> <span class="built_in">Object</span>.keys(obj)) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(key, obj[key])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>Object.values</code>返回对象自身可以迭代属性值（values）为数组类型。我们最好使用<code>Array.prototype.forEach</code>迭代它，结合ES6的箭头函数隐形返回值：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;<span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: <span class="number">2</span>, <span class="attr">c</span>: <span class="number">3</span>&#125;</span><br><span class="line"><span class="built_in">Object</span>.values(obj).forEach(<span class="function"><span class="params">value</span>=&gt;</span><span class="built_in">console</span>.log(value)) <span class="comment">// 1, 2, 3</span></span><br></pre></td></tr></table></figure>
+<p>或者实用for/of:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;<span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: <span class="number">2</span>, <span class="attr">c</span>: <span class="number">3</span>&#125;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> value <span class="keyword">of</span> <span class="built_in">Object</span>.values(obj)) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(value)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 1, 2, 3</span></span><br></pre></td></tr></table></figure>
+<p><code>Object.entries</code>，在另一方面，将会返回对象自身可迭代属性key-value对数组（作为一个数组），他们（key-value）分别以数组存放数组中:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;<span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: <span class="number">2</span>, <span class="attr">c</span>: <span class="number">3</span>&#125;</span><br><span class="line"><span class="built_in">JSON</span>.stringify(<span class="built_in">Object</span>.entries(obj))</span><br><span class="line"><span class="comment">// "[["a",1],["b",2],["c",3]]"</span></span><br></pre></td></tr></table></figure>
+<p>可以使用ES6/ES2015解构，从这嵌套数组中分别声明key和value</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;<span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: <span class="number">2</span>, <span class="attr">c</span>: <span class="number">3</span>&#125;</span><br><span class="line"><span class="built_in">Object</span>.entries(obj).forEach(<span class="function">(<span class="params">[key, value]</span>) =&gt;</span> &#123;</span><br><span class="line"> <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;key&#125;</span> is <span class="subst">$&#123;value&#125;</span>`</span>)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// a is 1, b is 2, c is 3</span></span><br></pre></td></tr></table></figure>
+<p>同样使用ES6for/of（毕竟全部都是数组）遍历Object.entries返回来的结果值：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;<span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: <span class="number">2</span>, <span class="attr">c</span>: <span class="number">3</span>&#125;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> [key, value] <span class="keyword">of</span> <span class="built_in">Object</span>.entries(obj)) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;key&#125;</span> is <span class="subst">$&#123;value&#125;</span>`</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// a is 1, b is 2, c is 3</span></span><br></pre></td></tr></table></figure>
+<p>现在从对象中提取values和key-value pairs 变得非常容易了。<code>Object.values</code>和<code>Object.entries</code>这种方式不想之前 <code>Object.keys</code>(自身属性key+顺序相同)结合<code>for/of</code>(ES6)一起，我们不仅仅可以提取他们还可以迭代他们。</p>
+<h2 id="String-padding-字符串填充"><a href="#String-padding-字符串填充" class="headerlink" title="String padding(字符串填充)"></a>String padding(字符串填充)</h2><p><code>String.prototype.padStart</code> 和 <code>String.prototype.padEnd</code>在javascript字符操作是一个不错的体验，帮助避免依赖而外的库。<br>padStart()在开始部位填充，返回一个给出长度的字符串，填充物给定字符串，把字符串填充到期望的长度。从字符串的左边开始（至少大部分西方语言），一个经典例子是使用空格创建列：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">'react'</span>.padStart(<span class="number">10</span>).length)         <span class="comment">// "       react" is 10</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'backbone'</span>.padStart(<span class="number">10</span>).length)         <span class="comment">// "  backbone" is 10</span></span><br></pre></td></tr></table></figure>
+<p>它对于财务方面非常有用：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">'0.00'</span>.padStart(<span class="number">20</span>))</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'10,000.00'</span>.padStart(<span class="number">20</span>))</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'250,000.00'</span>.padStart(<span class="number">20</span>))</span><br></pre></td></tr></table></figure>
+<p>如果是为会计做账之类的，这个很实用，帐做的很整齐😄</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">      <span class="number">0.00</span></span><br><span class="line"> <span class="number">10</span>,<span class="number">000.00</span></span><br><span class="line"><span class="number">250</span>,<span class="number">000.00</span></span><br></pre></td></tr></table></figure>
+<p>第二个参数，让我们放一些其他的填充字符替代空字符串，一个字符串填充：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">'react'</span>.padStart(<span class="number">10</span>, <span class="string">'_'</span>))         <span class="comment">// "_____react"</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'backbone'</span>.padStart(<span class="number">10</span>, <span class="string">'*'</span>))         <span class="comment">// "**backbone"</span></span><br></pre></td></tr></table></figure>
+<p>padEnd顾名思义就是从字符串的尾端右边开始填充。第二个参数，你能实际上用一个任何长度的字符串。例如：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">'react'</span>.padEnd(<span class="number">10</span>, <span class="string">':-)'</span>))         <span class="comment">// "react:-):-" is 10</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'backbone'</span>.padEnd(<span class="number">10</span>, <span class="string">'*'</span>))         <span class="comment">// "backbone**" is 10</span></span><br></pre></td></tr></table></figure>
+<p>再赏几个例子作为总结：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// String.prototype.padStart(targetLength [, padString])</span></span><br><span class="line"><span class="string">'hello'</span>.padStart(<span class="number">10</span>); <span class="comment">// '     hello'</span></span><br><span class="line"><span class="string">'hello'</span>.padStart(<span class="number">10</span>, <span class="string">'0'</span>); <span class="comment">// '00000hello'</span></span><br><span class="line"><span class="string">'hello'</span>.padStart(); <span class="comment">// 'hello'</span></span><br><span class="line"><span class="string">'hello'</span>.padStart(<span class="number">6</span>, <span class="string">'123'</span>); <span class="comment">// '1hello'</span></span><br><span class="line"><span class="string">'hello'</span>.padStart(<span class="number">3</span>); <span class="comment">// 'hello'</span></span><br><span class="line"><span class="string">'hello'</span>.padStart(<span class="number">3</span>, <span class="string">'123'</span>); <span class="comment">// 'hello';</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// String.prototype.padEnd(targetLength [, padString])</span></span><br><span class="line"><span class="string">'hello'</span>.padEnd(<span class="number">10</span>); <span class="comment">// 'hello     '</span></span><br><span class="line"><span class="string">'hello'</span>.padEnd(<span class="number">10</span>, <span class="string">'0'</span>); <span class="comment">// 'hello00000'</span></span><br><span class="line"><span class="string">'hello'</span>.padEnd(); <span class="comment">// 'hello'</span></span><br><span class="line"><span class="string">'hello'</span>.padEnd(<span class="number">6</span>, <span class="string">'123'</span>); <span class="comment">// 'hello1'</span></span><br><span class="line"><span class="string">'hello'</span>.padEnd(<span class="number">3</span>); <span class="comment">// 'hello'</span></span><br><span class="line"><span class="string">'hello'</span>.padEnd(<span class="number">3</span>, <span class="string">'123'</span>); <span class="comment">// 'hello';</span></span><br></pre></td></tr></table></figure>
+<h2 id="异步函数（Async-Functions）"><a href="#异步函数（Async-Functions）" class="headerlink" title="异步函数（Async Functions）"></a>异步函数（Async Functions）</h2><p>异步函数（或者async/await）特性操作是Promise最重要的功能。这种想法是为了在写异步代码中简化它，因为人类大脑最讨厌这种平行非序号思维了。它只是不会演变这种方式。本来以为Promise的到来已经是摆脱node异步的福音了，在ES8，异步函数是那么给力。开发者定义一个asyc函数里面不包含或者包含await 基于Promise异步操作。在这引擎之下一个异步函数返回一个Promise，无论无何你在任何地方不会看到这样的一个词Promise。 例如，在ES6中我们可以使用Promise，Axios库向GraphQL服务器发送一个请求：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">axios.get(<span class="string">`/q?query=<span class="subst">$&#123;query&#125;</span>`</span>)</span><br><span class="line">  .then(<span class="function"><span class="params">response</span> =&gt;</span> response.data)</span><br><span class="line">  .then(<span class="function"><span class="params">data</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">this</span>.props.processfetchedData(data) <span class="comment">// Defined somewhere else</span></span><br><span class="line">  &#125;)</span><br><span class="line">  .catch(<span class="function"><span class="params">error</span> =&gt;</span> <span class="built_in">console</span>.log(error))</span><br></pre></td></tr></table></figure>
+<p>任何一个Promise库都能兼容新的异步函数，我们可以使用同步try/catch做错误处理</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">async</span> fetchData(query) =&gt; &#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> response = <span class="keyword">await</span> axios.get(<span class="string">`/q?query=<span class="subst">$&#123;query&#125;</span>`</span>)</span><br><span class="line">    <span class="keyword">const</span> data = response.data</span><br><span class="line">    <span class="keyword">this</span>.props.processfetchedData(data)</span><br><span class="line">  &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(error)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>异步函数返回一个Promise，所以我们像下面可以继续执行流程:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">async</span> fetchData(query) =&gt; &#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> response = <span class="keyword">await</span> axios.get(<span class="string">`/q?query=<span class="subst">$&#123;query&#125;</span>`</span>)</span><br><span class="line">    <span class="keyword">const</span> data = response.data</span><br><span class="line">    <span class="keyword">return</span> data</span><br><span class="line">  &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(error)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">fetchData(query).then(<span class="function"><span class="params">data</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">this</span>.props.processfetchedData(data)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>有了 async/await,我们的代码执行异步看起来像执行同步一样。可以从头到尾读起来非常简单和易懂，因为出现结果顺序和函数题中从头到尾顺序一样啊！</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/nodejs/" rel="tag"># nodejs</a>
+          
+            <a href="/tags/ES6/" rel="tag"># ES6</a>
+          
+            <a href="/tags/ES2015/" rel="tag"># ES2015</a>
+          
+            <a href="/tags/ES7/" rel="tag"># ES7</a>
+          
+            <a href="/tags/ES2016/" rel="tag"># ES2016</a>
+          
+            <a href="/tags/ES8/" rel="tag"># ES8</a>
+          
+            <a href="/tags/ES2017/" rel="tag"># ES2017</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/12/http/" rel="next" title="HTTP相关基础">
+                <i class="fa fa-chevron-left"></i> HTTP相关基础
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/21/webpack/" rel="prev" title="webpack4 基本使用">
+                webpack4 基本使用 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar/1551152468450.jpg" alt="Zach Yuan">
+            
+              <p class="site-author-name" itemprop="name">Zach Yuan</p>
+              <p class="site-description motion-element" itemprop="description">Thinking and thinking</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">16</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">63</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/zileyuan" title="GitHub &rarr; https://github.com/zileyuan" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://twitter.com/zileyuan" title="Twitter &rarr; https://twitter.com/zileyuan" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:zileyuan@gmail.com" title="E-Mail &rarr; mailto:zileyuan@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ES6-ES2015-常用新特性"><span class="nav-number">1.</span> <span class="nav-text">ES6(ES2015)常用新特性</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#let-amp-amp-const"><span class="nav-number">1.1.</span> <span class="nav-text">let &amp;&amp; const</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#iterable类型"><span class="nav-number">1.2.</span> <span class="nav-text">iterable类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解构赋值"><span class="nav-number">1.3.</span> <span class="nav-text">解构赋值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#箭头函数"><span class="nav-number">1.4.</span> <span class="nav-text">箭头函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#…操作符"><span class="nav-number">1.5.</span> <span class="nav-text">…操作符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类"><span class="nav-number">1.6.</span> <span class="nav-text">类</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ES7-ES2016-常用新特性"><span class="nav-number">2.</span> <span class="nav-text">ES7(ES2016)常用新特性</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Array-prototype-includes"><span class="nav-number">2.1.</span> <span class="nav-text">Array.prototype.includes</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Exponentiation-Operator-求幂运算"><span class="nav-number">2.2.</span> <span class="nav-text">Exponentiation Operator(求幂运算)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ES8-ES2017-常用新特性"><span class="nav-number">3.</span> <span class="nav-text">ES8(ES2017)常用新特性</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Object-values-Object-entries"><span class="nav-number">3.1.</span> <span class="nav-text">Object.values/Object.entries</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#String-padding-字符串填充"><span class="nav-number">3.2.</span> <span class="nav-text">String padding(字符串填充)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#异步函数（Async-Functions）"><span class="nav-number">3.3.</span> <span class="nav-text">异步函数（Async Functions）</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zach Yuan</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="Symbols count total">49k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+    <span title="Reading time total">45 mins.</span>
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a></div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.1"></script>
+
+  <script src="/js/src/motion.js?v=7.0.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/affix.js?v=7.0.1"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=7.0.1"></script>
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.1"></script>
+<script src="/js/src/post-details.js?v=7.0.1"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=7.0.1"></script>
+
+
+  
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
