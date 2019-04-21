@@ -44,23 +44,21 @@
 
 
 
-
-
 <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
 
-<link rel="stylesheet" href="/css/main.css?v=7.0.1">
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.1">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.1">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
 
 
-  <link rel="mask-icon" href="/images/logo.svg?v=7.0.1" color="#222">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
 
 
 
@@ -73,8 +71,10 @@
   var CONFIG = {
     root: '/',
     scheme: 'Pisces',
-    version: '7.0.1',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false,"dimmer":false},
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
     fancybox: false,
     fastclick: false,
     lazyload: false,
@@ -97,7 +97,7 @@
 
 
   <meta name="description" content="Thinking and thinking">
-<meta name="keywords" content="git,node,babel,http,module,npm,tslint,webpack,hexo,next,flutter">
+<meta name="keywords" content="git,node,babel,http,module,npm,tslint,webpack,hexo,next,flutter,java,gradle,maven,spring">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Be a thinker">
 <meta property="og:url" content="http://blog.snakego.racing/tags/remote/index.html">
@@ -112,7 +112,8 @@
 
 
 
-
+  
+  
   <link rel="canonical" href="http://blog.snakego.racing/tags/remote/">
 
 
@@ -377,6 +378,7 @@
   
 
 
+
           </div>
           
 
@@ -406,7 +408,7 @@
               <img class="site-author-image" itemprop="image" src="/images/avatar/1551152468450.jpg" alt="Zach Yuan">
             
               <p class="site-author-name" itemprop="name">Zach Yuan</p>
-              <p class="site-description motion-element" itemprop="description">Thinking and thinking</p>
+              <div class="site-description motion-element" itemprop="description">Thinking and thinking</div>
           </div>
 
           
@@ -426,7 +428,11 @@
                 
                 
                 <div class="site-state-item site-state-categories">
-                  <a href="/categories/index.html">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
                     
                     
                       
@@ -455,7 +461,11 @@
                 
                 
                 <div class="site-state-item site-state-tags">
-                  <a href="/tags/index.html">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
                     
                     
                       
@@ -632,6 +642,8 @@
                 </div>
               
             </nav>
+          
+
           
 
           
@@ -815,39 +827,76 @@
   
 
 
-  <script src="/js/src/utils.js?v=7.0.1"></script>
+  <script src="/js/utils.js?v=7.1.0"></script>
 
-  <script src="/js/src/motion.js?v=7.0.1"></script>
+  <script src="/js/motion.js?v=7.1.0"></script>
 
-
-
-  
-  
-
-
-  <script src="/js/src/affix.js?v=7.0.1"></script>
-
-  <script src="/js/src/schemes/pisces.js?v=7.0.1"></script>
-
-
-
-  
-
-  
-
-
-  <script src="/js/src/bootstrap.js?v=7.0.1"></script>
 
 
   
   
 
 
+  <script src="/js/affix.js?v=7.1.0"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.0"></script>
+
+
+
+  
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+  
+
+<script src="//cdn1.lncld.net/static/js/3.11.1/av-min.js"></script>
+
+
+
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+<script>
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: false,
+    appId: 'sBbMDVItbc0FqQTclOKDbI2o-gzGzoHsz',
+    appKey: '4OKFm3DcIUgYFF3UiasdSgVV',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: true,
+    lang: 'en' || 'zh-cn'
+  });
+</script>
+
+
+
+
 
   
 
 
 
+
+  
 
   
 
