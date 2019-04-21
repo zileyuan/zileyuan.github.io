@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.0.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.0.1',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false,"dimmer":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="gradle的基本使用">
+<meta name="keywords" content="gradle,构建,java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="gradle基本使用">
+<meta property="og:url" content="http://blog.snakego.racing/2017/10/13/gradle/index.html">
+<meta property="og:site_name" content="Be a thinker">
+<meta property="og:description" content="gradle的基本使用">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-04-21T09:08:19.967Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="gradle基本使用">
+<meta name="twitter:description" content="gradle的基本使用">
+
+
+
+
+
+
+  <link rel="canonical" href="http://blog.snakego.racing/2017/10/13/gradle/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>gradle基本使用 | Be a thinker</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Be a thinker</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">Just funning</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.snakego.racing/2017/10/13/gradle/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zach Yuan">
+      <meta itemprop="description" content="Thinking and thinking">
+      <meta itemprop="image" content="/images/avatar/1551152468450.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Be a thinker">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">gradle基本使用
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2017-10-13 23:45:54" itemprop="dateCreated datePublished" datetime="2017-10-13T23:45:54+08:00">2017-10-13</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">6k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">5 mins.</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>gradle的基本使用</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="1分钟构建"><a href="#1分钟构建" class="headerlink" title="1分钟构建"></a>1分钟构建</h1><ul>
+<li><p>脚本内容</p>
+  <figure class="highlight gradle"><table><tr><td class="code"><pre><span class="line"><span class="comment">// build.gradle</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">task</span> hello &#123;</span><br><span class="line">    <span class="keyword">doLast</span> &#123;</span><br><span class="line">        <span class="keyword">println</span> <span class="string">'Hello world!'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>构建脚本</p>
+  <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&gt; gradle -q hello</span><br><span class="line">Hello world!</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="构建基础"><a href="#构建基础" class="headerlink" title="构建基础"></a>构建基础</h1><h2 id="核心概念"><a href="#核心概念" class="headerlink" title="核心概念"></a>核心概念</h2><ul>
+<li>projects ( 项目 )</li>
+<li>tasks ( 任务 )</li>
+</ul>
+<p>每一个 project 是由一个或多个 tasks 构成的. 一个 task 代表一些更加细化的构建. 可能是编译一些 classes, 创建一个 JAR, 生成 javadoc, 或者生成某个目录的压缩文件。</p>
+<h2 id="快捷的任务定义"><a href="#快捷的任务定义" class="headerlink" title="快捷的任务定义"></a>快捷的任务定义</h2><figure class="highlight gradle"><table><tr><td class="code"><pre><span class="line"><span class="comment">// build.gradle</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">task</span> hello &lt;&lt; &#123;</span><br><span class="line">    <span class="keyword">println</span> <span class="string">'Hello world!'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>与前面的例子比较, doLast 被替换成了 &lt;&lt;。 它们有一样的功能, 但看上去更加简洁了</p>
+<h2 id="任务依赖"><a href="#任务依赖" class="headerlink" title="任务依赖"></a>任务依赖</h2><h3 id="脚本内容"><a href="#脚本内容" class="headerlink" title="脚本内容"></a>脚本内容</h3><figure class="highlight gradle"><table><tr><td class="code"><pre><span class="line"><span class="comment">// build.gradle</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">task</span> hello &lt;&lt; &#123;</span><br><span class="line">    <span class="keyword">println</span> <span class="string">'Hello world!'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">task</span> intro(dependsOn: hello) &lt;&lt; &#123;</span><br><span class="line">    <span class="keyword">println</span> <span class="string">"I'm Gradle"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="运行脚本"><a href="#运行脚本" class="headerlink" title="运行脚本"></a>运行脚本</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&gt; gradle -q intro</span><br><span class="line">Hello world!</span><br><span class="line">I<span class="string">'m Gradle</span></span><br></pre></td></tr></table></figure>
+<h2 id="动态任务"><a href="#动态任务" class="headerlink" title="动态任务"></a>动态任务</h2><p>通过Groovy语言来创建动态任务</p>
+<figure class="highlight gradle"><table><tr><td class="code"><pre><span class="line"><span class="comment">// build.gradle</span></span><br><span class="line"></span><br><span class="line"><span class="number">4</span>.<span class="keyword">times</span> &#123; counter -&gt;</span><br><span class="line">    <span class="keyword">task</span> <span class="string">"task$counter"</span> &lt;&lt; &#123;</span><br><span class="line">        <span class="keyword">println</span> <span class="string">"I'm task number $counter"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里动态的创建了 task0, task1, task2, task3</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&gt;&gt; gradle -q task1</span><br><span class="line">I<span class="string">'m task number 1</span></span><br></pre></td></tr></table></figure>
+<h2 id="通过API加入依赖"><a href="#通过API加入依赖" class="headerlink" title="通过API加入依赖"></a>通过API加入依赖</h2><figure class="highlight gradle"><table><tr><td class="code"><pre><span class="line"><span class="comment">// build.gradle</span></span><br><span class="line"></span><br><span class="line"><span class="number">4</span>.<span class="keyword">times</span> &#123; counter -&gt;</span><br><span class="line">    <span class="keyword">task</span> <span class="string">"task$counter"</span> &lt;&lt; &#123;</span><br><span class="line">        <span class="keyword">println</span> <span class="string">"I'm task number $counter"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">task0.dependsOn task2, task3</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&gt; gradle -q task0</span><br><span class="line">I<span class="string">'m task number 2</span></span><br><span class="line"><span class="string">I'</span>m task number 3</span><br><span class="line">I<span class="string">'m task number 0</span></span><br></pre></td></tr></table></figure>
+<h2 id="通过API加入行为"><a href="#通过API加入行为" class="headerlink" title="通过API加入行为"></a>通过API加入行为</h2><figure class="highlight gradle"><table><tr><td class="code"><pre><span class="line"><span class="comment">// build.gradle</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">task</span> hello &lt;&lt; &#123;</span><br><span class="line">    <span class="keyword">println</span> <span class="string">'Hello Earth'</span></span><br><span class="line">&#125;</span><br><span class="line">hello.<span class="keyword">doFirst</span> &#123;</span><br><span class="line">    <span class="keyword">println</span> <span class="string">'Hello Venus'</span></span><br><span class="line">&#125;</span><br><span class="line">hello.<span class="keyword">doLast</span> &#123;</span><br><span class="line">    <span class="keyword">println</span> <span class="string">'Hello Mars'</span></span><br><span class="line">&#125;</span><br><span class="line">hello &lt;&lt; &#123; <span class="comment">//特别注意：&lt;&lt; 操作符是 doLast 的简单别称</span></span><br><span class="line">    <span class="keyword">println</span> <span class="string">'Hello Jupiter'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&gt; gradle -q hello</span><br><span class="line">Hello Venus</span><br><span class="line">Hello Earth</span><br><span class="line">Hello Mars</span><br><span class="line">Hello Jupiter</span><br></pre></td></tr></table></figure>
+<h2 id="默认任务"><a href="#默认任务" class="headerlink" title="默认任务"></a>默认任务</h2><figure class="highlight gradle"><table><tr><td class="code"><pre><span class="line"><span class="comment">// build.gradle</span></span><br><span class="line"></span><br><span class="line">defaultTasks <span class="string">'clean'</span>, <span class="string">'run'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">task</span> clean &lt;&lt; &#123;</span><br><span class="line">    <span class="keyword">println</span> <span class="string">'Default Cleaning!'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">task</span> run &lt;&lt; &#123;</span><br><span class="line">    <span class="keyword">println</span> <span class="string">'Default Running!'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">task</span> other &lt;&lt; &#123;</span><br><span class="line">    <span class="keyword">println</span> <span class="string">"I'm not a default task!"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&gt; gradle -q</span><br><span class="line">Default Cleaning!</span><br><span class="line">Default Running!</span><br></pre></td></tr></table></figure>
+<p>允许在脚本中定义一个或多个默认任务。等价于 gradle -q clean run。在一个多项目构建中，每一个子项目都可以有它特别的默认任务。如果一个子项目没有特别的默认任务, 父项目的默认任务将会被执行。</p>
+<h2 id="短标记法-任务属性"><a href="#短标记法-任务属性" class="headerlink" title="短标记法(任务属性)"></a>短标记法(任务属性)</h2><figure class="highlight gradle"><table><tr><td class="code"><pre><span class="line"><span class="comment">// build.gradle</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">task</span> hello &lt;&lt; &#123;</span><br><span class="line">    <span class="keyword">println</span> <span class="string">'Hello world!'</span></span><br><span class="line">&#125;</span><br><span class="line">hello.<span class="keyword">doLast</span> &#123;</span><br><span class="line">    <span class="keyword">println</span> <span class="string">"Greetings from the $hello.name task."</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&gt; gradle -q hello</span><br><span class="line">Hello world!</span><br><span class="line">Greetings from the hello task.</span><br></pre></td></tr></table></figure>
+<p>短标记 $ 可以访问一个存在的任务。也就是说每个任务都可以作为构建脚本的属性，这里的 name 是任务的默认属性，代表当前任务的名称，这里是 hello。这使得代码易于读取，特别是当使用了由插件（如编译）提供的任务时尤其如此。</p>
+<h2 id="自定义任务属性"><a href="#自定义任务属性" class="headerlink" title="自定义任务属性"></a>自定义任务属性</h2><figure class="highlight gradle"><table><tr><td class="code"><pre><span class="line"><span class="comment">// build.gradle</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">task</span> myTask &#123;</span><br><span class="line">    ext.myProperty = <span class="string">"myValue"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">task</span> printTaskProperties &lt;&lt; &#123;</span><br><span class="line">    <span class="keyword">println</span> myTask.myProperty</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&gt; gradle -q printTaskProperties</span><br><span class="line">myValue</span><br></pre></td></tr></table></figure>
+<p>加入一个叫做 myProperty 属性，设置一个初始值给 ext.myProperty。然后，该属性就可以像一个预定义的任务属性那样被读取和设置了。</p>
+<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><figure class="highlight gradle"><table><tr><td class="code"><pre><span class="line"><span class="comment">// build.gradle</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">task</span> checksum &lt;&lt; &#123;</span><br><span class="line">    fileList(<span class="string">'../antLoadfileResources'</span>).<span class="keyword">each</span> &#123;<span class="keyword">File</span> <span class="keyword">file</span> -&gt;</span><br><span class="line">        <span class="keyword">ant</span>.checksum(<span class="keyword">file</span>: <span class="keyword">file</span>, property: <span class="string">"cs_$file.name"</span>)</span><br><span class="line">        <span class="keyword">println</span> <span class="string">"$file.name Checksum: $&#123;ant.properties["</span>cs_$<span class="keyword">file</span>.name<span class="string">"]&#125;"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">task</span> loadfile &lt;&lt; &#123;</span><br><span class="line">    fileList(<span class="string">'../antLoadfileResources'</span>).<span class="keyword">each</span> &#123;<span class="keyword">File</span> <span class="keyword">file</span> -&gt;</span><br><span class="line">        <span class="keyword">ant</span>.loadfile(srcFile: <span class="keyword">file</span>, property: <span class="keyword">file</span>.name)</span><br><span class="line">        <span class="keyword">println</span> <span class="string">"I'm fond of $file.name"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">File</span>[] fileList(String dir) &#123;</span><br><span class="line">    <span class="keyword">file</span>(dir).listFiles(&#123;<span class="keyword">file</span> -&gt; <span class="keyword">file</span>.isFile() &#125; as FileFilter).<span class="keyword">sort</span>()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&gt; gradle -q loadfile</span><br><span class="line">I<span class="string">'m fond of agile.manifesto.txt</span></span><br><span class="line"><span class="string">I'</span>m fond of gradle.manifesto.txt</span><br></pre></td></tr></table></figure>
+<p>编写脚本的逻辑能力，首先要做的是如何提取一个方法。如果你的构建逻辑变得更加复杂，Gradle 为你提供了其他非常方便的方法。</p>
+<h2 id="任务钩子"><a href="#任务钩子" class="headerlink" title="任务钩子"></a>任务钩子</h2><figure class="highlight gradle"><table><tr><td class="code"><pre><span class="line"><span class="comment">// build.gradle</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">task</span> distribution &lt;&lt; &#123;</span><br><span class="line">    <span class="keyword">println</span> <span class="string">"We build the zip with version=$version"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">task</span> release(dependsOn: <span class="string">'distribution'</span>) &lt;&lt; &#123;</span><br><span class="line">    <span class="keyword">println</span> <span class="string">'We release now'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">gradle.taskGraph.whenReady &#123;taskGraph -&gt;</span><br><span class="line">    <span class="keyword">if</span> (taskGraph.hasTask(release)) &#123;</span><br><span class="line">        version = <span class="string">'1.0'</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        version = <span class="string">'1.0-SNAPSHOT'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&gt; gradle -q distribution</span><br><span class="line">We build the zip with version=1.0-SNAPSHOT</span><br><span class="line">Output of gradle -q release</span><br><span class="line">&gt; gradle -q release</span><br><span class="line">We build the zip with version=1.0</span><br><span class="line">We release now</span><br></pre></td></tr></table></figure>
+<p>判断发布的任务是否在要被执行的任务当中。根据这一点，你可以给一些变量指定不同的值。例子中, distribution 任务和 release 任务将根据变量的版本产生不同的值。</p>
+<h1 id="构建高级"><a href="#构建高级" class="headerlink" title="构建高级"></a>构建高级</h1><h2 id="使用插件"><a href="#使用插件" class="headerlink" title="使用插件"></a>使用插件</h2><figure class="highlight gradle"><table><tr><td class="code"><pre><span class="line"><span class="comment">// build.gradle</span></span><br><span class="line"></span><br><span class="line">apply plugin: <span class="string">'java'</span></span><br></pre></td></tr></table></figure>
+<p>Gradle 希望能在 src/main/java 找到你的源代码，在 src/test/java 找到你的测试代码, 也就是说 Gradle 默认地在这些路径里查找资源。另外, 任何在 src/main/resources 的文件都将被包含在 JAR 文件里，同时任何在 src/test/resources 的文件会被加入到 classpath 中以运行测试代码。所有的输出文件将会被创建在构建目录里，JAR 文件存放在 build/libs 文件夹里。</p>
+<h2 id="外部的依赖"><a href="#外部的依赖" class="headerlink" title="外部的依赖"></a>外部的依赖</h2><h3 id="加入-Maven-仓库"><a href="#加入-Maven-仓库" class="headerlink" title="加入 Maven 仓库"></a>加入 Maven 仓库</h3><figure class="highlight gradle"><table><tr><td class="code"><pre><span class="line"><span class="comment">// build.gradle</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">repositories</span> &#123;</span><br><span class="line">    maven &#123; url <span class="string">"http://maven.aliyun.com/nexus/content/groups/public/"</span> &#125;</span><br><span class="line">    mavenCentral()</span><br><span class="line">    jcenter()</span><br><span class="line">    google()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Gradle 能解析好几种不同的仓库形式, 比如 Maven 和 Ivy，例子中第一项为阿里云的远程的 Maven 仓库镜像，在国内可以加速</p>
+<h3 id="加入包依赖"><a href="#加入包依赖" class="headerlink" title="加入包依赖"></a>加入包依赖</h3><figure class="highlight gradle"><table><tr><td class="code"><pre><span class="line"><span class="comment">// build.gradle</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">dependencies</span> &#123;</span><br><span class="line">    implementation(<span class="string">'com.alibaba:druid:1.1.12'</span>)</span><br><span class="line">    testImplementation(<span class="string">'junit:junit:4.11'</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>简写格式为：<code>group:name:version</code>，另外api也是一种依赖方法。</p>
+<h2 id="多项目构建"><a href="#多项目构建" class="headerlink" title="多项目构建"></a>多项目构建</h2><h3 id="设置文件"><a href="#设置文件" class="headerlink" title="设置文件"></a>设置文件</h3><p>创建一个设置文件 ( settings file)。设置文件放在源代码的根目录，它指定要包含哪个项目。它的名字必须叫做 settings.gradle。</p>
+<figure class="highlight gradle"><table><tr><td class="code"><pre><span class="line"><span class="comment">// settings.gradle</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">include</span> <span class="string">"shared"</span>, <span class="string">"api"</span>, <span class="string">"services:webservice"</span>, <span class="string">"services:shared"</span></span><br></pre></td></tr></table></figure>
+<h3 id="通用配置"><a href="#通用配置" class="headerlink" title="通用配置"></a>通用配置</h3><figure class="highlight gradle"><table><tr><td class="code"><pre><span class="line"><span class="comment">// build.gradle</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">subprojects</span> &#123;</span><br><span class="line">    apply plugin: <span class="string">'java'</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">repositories</span> &#123;</span><br><span class="line">       mavenCentral()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">dependencies</span> &#123;</span><br><span class="line">        testImplementation(<span class="string">'junit:junit:4.11'</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    version = <span class="string">'1.0'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="项目之间的依赖"><a href="#项目之间的依赖" class="headerlink" title="项目之间的依赖"></a>项目之间的依赖</h3><figure class="highlight gradle"><table><tr><td class="code"><pre><span class="line"><span class="comment">// build.gradle</span></span><br><span class="line"></span><br><span class="line">implementation <span class="keyword">project</span>(<span class="string">':shared'</span>)</span><br></pre></td></tr></table></figure>
+<h1 id="gradle命令"><a href="#gradle命令" class="headerlink" title="gradle命令"></a>gradle命令</h1><h2 id="多任务调用"><a href="#多任务调用" class="headerlink" title="多任务调用"></a>多任务调用</h2><ul>
+<li>可以以列表的形式在命令行中一次调用多个任务。例如 gradle compile test 命令会依次调用 compile 和 test 任务，它们所依赖的任务也会被调用。</li>
+<li>这些任务只会被调用一次，无论它们是否被包含在脚本中：即无论是以命令行的形式定义的任务还是依赖于其它任务都会被调用执行。</li>
+</ul>
+<figure class="highlight gradle"><table><tr><td class="code"><pre><span class="line"><span class="comment">// build.gradle</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">task</span> <span class="keyword">compile</span> &lt;&lt; &#123;</span><br><span class="line">    <span class="keyword">println</span> <span class="string">'compiling source'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">task</span> compileTest(dependsOn: <span class="keyword">compile</span>) &lt;&lt; &#123;</span><br><span class="line">    <span class="keyword">println</span> <span class="string">'compiling unit tests'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">task</span> test(dependsOn: [<span class="keyword">compile</span>, compileTest]) &lt;&lt; &#123;</span><br><span class="line">    <span class="keyword">println</span> <span class="string">'running unit tests'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">task</span> dist(dependsOn: [<span class="keyword">compile</span>, test]) &lt;&lt; &#123;</span><br><span class="line">    <span class="keyword">println</span> <span class="string">'building the distribution'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&gt; gradle dist <span class="built_in">test</span></span><br><span class="line">:compile</span><br><span class="line">compiling <span class="built_in">source</span></span><br><span class="line">:compileTest</span><br><span class="line">compiling unit tests</span><br><span class="line">:<span class="built_in">test</span></span><br><span class="line">running unit tests</span><br><span class="line">:dist</span><br><span class="line">building the distribution</span><br><span class="line"></span><br><span class="line">BUILD SUCCESSFUL</span><br><span class="line"></span><br><span class="line">Total time: 1 secs</span><br></pre></td></tr></table></figure>
+<p>由于每个任务仅会被调用一次，所以调用gradle test test与调用gradle test效果是相同的。</p>
+<h2 id="排除任务"><a href="#排除任务" class="headerlink" title="排除任务"></a>排除任务</h2><p>可以用命令行选项-x来排除某些任务，让我们用上面的例子来示范一下。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&gt; gradle dist -x <span class="built_in">test</span></span><br><span class="line">:compile</span><br><span class="line">compiling <span class="built_in">source</span></span><br><span class="line">:dist</span><br><span class="line">building the distribution</span><br><span class="line"></span><br><span class="line">BUILD SUCCESSFUL</span><br><span class="line"></span><br><span class="line">Total time: 1 secs</span><br></pre></td></tr></table></figure>
+<p>可以看到，test 任务并没有被调用，即使它是 dist 任务的依赖。同时 test 任务的依赖任务 compileTest 也没有被调用，而像 compile 被 test 和其它任务同时依赖的任务仍然会被调用。</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/gradle/" rel="tag"># gradle</a>
+          
+            <a href="/tags/构建/" rel="tag"># 构建</a>
+          
+            <a href="/tags/java/" rel="tag"># java</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/10/12/linux_firewall/" rel="next" title="linux下防火墙的基本设置（centos和debian）">
+                <i class="fa fa-chevron-left"></i> linux下防火墙的基本设置（centos和debian）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/11/23/curl/" rel="prev" title="curl的基本用法">
+                curl的基本用法 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar/1551152468450.jpg" alt="Zach Yuan">
+            
+              <p class="site-author-name" itemprop="name">Zach Yuan</p>
+              <p class="site-description motion-element" itemprop="description">Thinking and thinking</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">20</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">72</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/zileyuan" title="GitHub &rarr; https://github.com/zileyuan" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://twitter.com/zileyuan" title="Twitter &rarr; https://twitter.com/zileyuan" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:zileyuan@gmail.com" title="E-Mail &rarr; mailto:zileyuan@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1分钟构建"><span class="nav-number">1.</span> <span class="nav-text">1分钟构建</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#构建基础"><span class="nav-number">2.</span> <span class="nav-text">构建基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#核心概念"><span class="nav-number">2.1.</span> <span class="nav-text">核心概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#快捷的任务定义"><span class="nav-number">2.2.</span> <span class="nav-text">快捷的任务定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#任务依赖"><span class="nav-number">2.3.</span> <span class="nav-text">任务依赖</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#脚本内容"><span class="nav-number">2.3.1.</span> <span class="nav-text">脚本内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运行脚本"><span class="nav-number">2.3.2.</span> <span class="nav-text">运行脚本</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#动态任务"><span class="nav-number">2.4.</span> <span class="nav-text">动态任务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#通过API加入依赖"><span class="nav-number">2.5.</span> <span class="nav-text">通过API加入依赖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#通过API加入行为"><span class="nav-number">2.6.</span> <span class="nav-text">通过API加入行为</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#默认任务"><span class="nav-number">2.7.</span> <span class="nav-text">默认任务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#短标记法-任务属性"><span class="nav-number">2.8.</span> <span class="nav-text">短标记法(任务属性)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自定义任务属性"><span class="nav-number">2.9.</span> <span class="nav-text">自定义任务属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用方法"><span class="nav-number">2.10.</span> <span class="nav-text">使用方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#任务钩子"><span class="nav-number">2.11.</span> <span class="nav-text">任务钩子</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#构建高级"><span class="nav-number">3.</span> <span class="nav-text">构建高级</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用插件"><span class="nav-number">3.1.</span> <span class="nav-text">使用插件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#外部的依赖"><span class="nav-number">3.2.</span> <span class="nav-text">外部的依赖</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#加入-Maven-仓库"><span class="nav-number">3.2.1.</span> <span class="nav-text">加入 Maven 仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#加入包依赖"><span class="nav-number">3.2.2.</span> <span class="nav-text">加入包依赖</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多项目构建"><span class="nav-number">3.3.</span> <span class="nav-text">多项目构建</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#设置文件"><span class="nav-number">3.3.1.</span> <span class="nav-text">设置文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通用配置"><span class="nav-number">3.3.2.</span> <span class="nav-text">通用配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#项目之间的依赖"><span class="nav-number">3.3.3.</span> <span class="nav-text">项目之间的依赖</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#gradle命令"><span class="nav-number">4.</span> <span class="nav-text">gradle命令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#多任务调用"><span class="nav-number">4.1.</span> <span class="nav-text">多任务调用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#排除任务"><span class="nav-number">4.2.</span> <span class="nav-text">排除任务</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zach Yuan</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="Symbols count total">65k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+    <span title="Reading time total">59 mins.</span>
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a></div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.1"></script>
+
+  <script src="/js/src/motion.js?v=7.0.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/affix.js?v=7.0.1"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=7.0.1"></script>
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.1"></script>
+<script src="/js/src/post-details.js?v=7.0.1"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=7.0.1"></script>
+
+
+  
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
