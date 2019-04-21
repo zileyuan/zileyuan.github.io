@@ -1,5 +1,5 @@
 # hexo robots.txt
 User-agent: *
 Allow: /
-Sitemap: http://blog.snakego.racing/sitemap.xml
-Sitemap: http://blog.snakego.racing/baidusitemap.xml
+Sitemap: https://blog.snakego.racing/sitemap.xml
+Sitemap: https://blog.snakego.racing/baidusitemap.xml
